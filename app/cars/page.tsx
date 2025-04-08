@@ -139,7 +139,7 @@ export default function CarsPage() {
   // Efecto para inicializar los filtros desde URL al montar el componente
   useEffect(() => {
     // aplicar los filtros iniciales si hay algún parámetro
-    let tempFilters = { ...initialFilters };
+    const tempFilters = { ...initialFilters };
     if ((myParams.brand && !filters.brands) || (myParams.brand && filters.brands && filters.brands[0] !== myParams.brand)) {
       tempFilters.brands = [myParams.brand];
     }
