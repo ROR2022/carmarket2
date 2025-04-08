@@ -224,7 +224,7 @@ export default function CarsPage() {
           }
         });
         const result = response.data;
-        
+        console.warn('Cars loaded:', result);
         
         setCars(result.cars);
         
