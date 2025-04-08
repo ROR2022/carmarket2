@@ -24,7 +24,25 @@ export async function POST(request: NextRequest) {
     }
 
     if (methodSelected === 'searchListings') {
-        const result = await CatalogService.searchListings(sentParams.filters, sentParams.page, sentParams.pageSize, sentParams.sort);
+        const tempFilters:any = {};
+        const { filters } = sentParams;
+        if (filters.brand && filters.brand.length > 0 && filters.brand[0] !== '') {
+            tempFilters.brand = filters.brand;
+        }
+        if (filters.category && filters.category.length > 0 && filters.category[0] !== '') {
+            tempFilters.category = filters.category;
+        }
+        if (filters.minPrice && filters.minPrice > 0) {
+            tempFilters.minPrice = filters.minPrice;
+        }
+        if (filters.maxPrice && filters.maxPrice > 0) {
+            tempFilters.maxPrice = filters.maxPrice;
+        }
+        if (filters.searchTerm && filters.searchTerm !== '') {
+            tempFilters.searchTerm = filters.searchTerm;
+        }
+
+        const result = await CatalogService.searchListings(tempFilters, sentParams.page, sentParams.pageSize, sentParams.sort);
         return NextResponse.json(result);
     }
     
