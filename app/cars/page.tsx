@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { CarCard } from '@/components/car/car-card';
 import { CarFilters } from '@/components/car/car-filters';
@@ -18,15 +18,58 @@ import { Loader2 } from 'lucide-react';
 //import { CatalogService } from '@/services/catalog';
 import axios from 'axios';
 
+
+type TMyParasm = {
+  category?: string;
+  brand?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  searchTerm?: string;
+}
+interface GetSearchParamsProps {
+  setMyParams: (myparams:TMyParasm) => void;
+}
+
+const GetSearchParams = ({setMyParams}: GetSearchParamsProps) => {
+  const searchParams = useSearchParams();
+  const brand = searchParams.get('brand');
+    const minPrice = searchParams.get('minPrice');
+    const maxPrice = searchParams.get('maxPrice');
+    const category = searchParams.get('category');
+    const searchTerm = searchParams.get('searchTerm');
+
+    useEffect(() => {
+      const params: TMyParasm = {};
+      if (brand) params.brand = brand;
+      if (minPrice) params.minPrice = parseInt(minPrice);
+      if (maxPrice) params.maxPrice = parseInt(maxPrice);
+      if (category) params.category = category;
+      if (searchTerm) params.searchTerm = searchTerm;
+
+      setMyParams(params);
+    },[brand, minPrice, maxPrice, category, searchTerm]);
+  
+  return null;
+}
+
+const initialFilters: CarFiltersType = {
+  searchTerm: '',
+  brands: [],
+  categories: [],
+  minPrice: undefined,
+  maxPrice: undefined
+};
+
 export default function CarsPage() {
   const { t } = useTranslation();
-  const searchParams = useSearchParams();
+  //const searchParams = useSearchParams();
   const router = useRouter();
   
   // Estados
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [cars, setCars] = useState<Car[]>([]);
+  const [myParams, setMyParams] = useState<TMyParasm>({});
   const [pagination, setPagination] = useState<PaginationInfo>({
     currentPage: 1,
     totalPages: 1,
@@ -37,7 +80,7 @@ export default function CarsPage() {
   });
   
   // Inicializar filtros desde parámetros de URL si existen
-  const initialFilters = React.useMemo(() => {
+  /* const initialFilters = React.useMemo(() => {
     const searchTerm = searchParams.get('searchTerm');
     const brand = searchParams.get('brand');
     const minPrice = searchParams.get('minPrice');
@@ -53,7 +96,9 @@ export default function CarsPage() {
     if (maxPrice) filters.maxPrice = parseInt(maxPrice);
     
     return filters;
-  }, [searchParams]);
+  }, [searchParams]); */
+
+
   
   const [filters, setFilters] = useState<CarFiltersType>(initialFilters);
   const [sortOption, setSortOption] = useState<SortOption>('created_desc');
@@ -93,11 +138,31 @@ export default function CarsPage() {
   
   // Efecto para inicializar los filtros desde URL al montar el componente
   useEffect(() => {
-    // Solo aplicar los filtros iniciales si hay algún parámetro
-    if (Object.keys(initialFilters).length > 0) {
-      userInitiatedChange.current = true;
+    // aplicar los filtros iniciales si hay algún parámetro
+    let tempFilters = { ...initialFilters };
+    if ((myParams.brand && !filters.brands) || (myParams.brand && filters.brands && filters.brands[0] !== myParams.brand)) {
+      tempFilters.brands = [myParams.brand];
     }
-  }, [initialFilters]);
+
+    if ((myParams.category && !filters.categories) || (myParams.category && filters.categories && filters.categories[0] !== myParams.category)) {
+      tempFilters.categories = [myParams.category as CarCategory];
+    }
+    
+    if (myParams.minPrice && !filters.minPrice || (filters.minPrice && filters.minPrice !== myParams.minPrice)) {
+      tempFilters.minPrice = myParams.minPrice;
+    }
+
+    if (myParams.maxPrice && !filters.maxPrice || (filters.maxPrice && filters.maxPrice !== myParams.maxPrice)) {
+      tempFilters.maxPrice = myParams.maxPrice;
+    }
+    if (myParams.searchTerm && !filters.searchTerm || (filters.searchTerm && filters.searchTerm !== myParams.searchTerm)) {
+      tempFilters.searchTerm = myParams.searchTerm;
+    }
+    setFilters(tempFilters);
+    
+  }, [myParams.brand, myParams.minPrice, myParams.maxPrice, myParams.category, myParams.searchTerm]);
+
+  useEffect(() => {}, [filters]);
   
   // Cargar marcas disponibles
   useEffect(() => {
@@ -288,6 +353,9 @@ export default function CarsPage() {
   
   return (
     <div className="container py-10">
+      <Suspense>
+        <GetSearchParams setMyParams={setMyParams} />
+      </Suspense>
       <div className="flex flex-col items-center justify-center space-y-4 text-center mb-10">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
           {t('cars.pageTitle')}
