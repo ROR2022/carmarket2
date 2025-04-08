@@ -53,6 +53,7 @@ const GetSearchParams = ({setMyParams}: GetSearchParamsProps) => {
       if (searchTerm) params.searchTerm = searchTerm;
 
       setMyParams(params);
+      console.warn('GetSearchParams: ', params);
     },[searchParams]);
   
   return null;
