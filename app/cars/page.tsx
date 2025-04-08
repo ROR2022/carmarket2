@@ -166,7 +166,7 @@ export default function CarsPage() {
     
   }, [myParams.brand, myParams.minPrice, myParams.maxPrice, myParams.category, myParams.searchTerm]);
 
-  useEffect(() => {}, [filters]);
+  
   
   // Cargar marcas disponibles
   useEffect(() => {
