@@ -147,22 +147,19 @@ export default function CarsPage() {
   useEffect(() => {
     // aplicar los filtros iniciales si hay algún parámetro
     const tempFilters = { ...initialFilters };
-    if ((myParams.brand && !filters.brands) || (myParams.brand && filters.brands && filters.brands[0] !== myParams.brand)) {
-      tempFilters.brands = [myParams.brand];
+    if ((!filters.brands) || (filters.brands && filters.brands[0] !== myParams.brand)) {
+      tempFilters.brands = [myParams.brand || ''];
     }
-
-    if ((myParams.category && !filters.categories) || (myParams.category && filters.categories && filters.categories[0] !== myParams.category)) {
+    if ((!filters.categories) || (filters.categories && filters.categories[0] !== myParams.category)) {
       tempFilters.categories = [myParams.category as CarCategory];
     }
-    
-    if (myParams.minPrice && !filters.minPrice || (filters.minPrice && filters.minPrice !== myParams.minPrice)) {
+    if (!filters.minPrice || (filters.minPrice !== myParams.minPrice)) {
       tempFilters.minPrice = myParams.minPrice;
     }
-
-    if (myParams.maxPrice && !filters.maxPrice || (filters.maxPrice && filters.maxPrice !== myParams.maxPrice)) {
+    if (!filters.maxPrice || (filters.maxPrice && filters.maxPrice !== myParams.maxPrice)) {
       tempFilters.maxPrice = myParams.maxPrice;
     }
-    if (myParams.searchTerm && !filters.searchTerm || (filters.searchTerm && filters.searchTerm !== myParams.searchTerm)) {
+    if (!filters.searchTerm || (filters.searchTerm !== myParams.searchTerm)) {
       tempFilters.searchTerm = myParams.searchTerm;
     }
     setFilters(tempFilters);
