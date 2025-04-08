@@ -24,7 +24,14 @@ export async function POST(request: NextRequest) {
     }
 
     if (methodSelected === 'searchListings') {
-        const tempFilters:any = {};
+        type FilterParams = {
+            brand?: string[];
+            category?: string[];
+            minPrice?: number;
+            maxPrice?: number;
+            searchTerm?: string;
+            };
+        const tempFilters:FilterParams = {};
         const { filters } = sentParams;
         if (filters.brand && filters.brand.length > 0 && filters.brand[0] !== '') {
             tempFilters.brand = filters.brand;
