@@ -39,7 +39,13 @@ const GetSearchParams = ({setMyParams}: GetSearchParamsProps) => {
     const searchTerm = searchParams.get('searchTerm');
 
     useEffect(() => {
-      const params: TMyParasm = {};
+      const params: TMyParasm = {
+        brand: '',
+        minPrice: 0,
+        maxPrice: 0,
+        category: '',
+        searchTerm: ''
+      };
       if (brand) params.brand = brand;
       if (minPrice) params.minPrice = parseInt(minPrice);
       if (maxPrice) params.maxPrice = parseInt(maxPrice);
@@ -47,7 +53,7 @@ const GetSearchParams = ({setMyParams}: GetSearchParamsProps) => {
       if (searchTerm) params.searchTerm = searchTerm;
 
       setMyParams(params);
-    },[brand, minPrice, maxPrice, category, searchTerm]);
+    },[searchParams]);
   
   return null;
 }
