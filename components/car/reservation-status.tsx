@@ -8,10 +8,11 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { Button } from '@/components/ui/button'
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { ReservationService } from "@/services/reservation"
+//import { ReservationService } from "@/services/reservation"
 import { useRouter } from "next/navigation"
-import { useToast } from "@/components/ui/use-toast"
+import { toast } from 'sonner';
 import { ReservationStatus as ReservationStatusType } from "@/types/reservation"
+import axios from "axios"
 
 interface ReservationStatusProps {
   carId: string
@@ -41,7 +42,7 @@ export default function ReservationStatus({
   const [reservationDetails, setReservationDetails] = useState<ReservationDetails | null>(null)
   const [_showContact, _setShowContact] = useState(false)
   const router = useRouter()
-  const { toast } = useToast()
+  
 
   useEffect(() => {
     const checkReservationStatus = async () => {
@@ -107,23 +108,21 @@ export default function ReservationStatus({
     if (!reservationDetails) return
     
     try {
-      await ReservationService.releaseReservation(reservationDetails.id)
-      
-      toast({
-        title: "Reserva cancelada",
-        description: "La reserva ha sido cancelada correctamente.",
+      //await ReservationService.releaseReservation(reservationDetails.id)
+      await axios.post('/api/reservations/check', {
+        methodSelected: 'cancel',
+        sentParams: {
+          reservationId: reservationDetails.id,
+        },
       })
+      toast.success("La reserva ha sido cancelada correctamente.")
       
       // Recargar la página para actualizar el estado
       router.refresh()
     } catch (error) {
       console.error("Error cancelling reservation:", error)
       
-      toast({
-        title: "Error",
-        description: "No se pudo cancelar la reserva. Intenta nuevamente.",
-        variant: "destructive",
-      })
+      toast.error("No se pudo cancelar la reserva. Intenta nuevamente.")
     }
   }
   
