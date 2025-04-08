@@ -1,0 +1,1130 @@
+{
+  "common": {
+    "appName": "CarMarket",
+    "loading": "Cargando...",
+    "loading_details": "Cargando detalles del vehículo...",
+    "error": "Error",
+    "back_to_list": "Volver a la lista",
+    "browse_all": "Explorar todos los autos",
+    "back_to_all_cars": "Volver a todos los autos",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "save": "Guardar",
+    "close": "Cerrar",
+    "confirm": "Confirmar",
+    "clear": "Limpiar",
+    "sending": "Enviando...",
+    "success": "Éxito",
+    "warning": "Advertencia",
+    "info": "Información",
+    "retry": "Reintentar",
+    "back_to_cars": "Volver a la lista de autos"
+  },
+  "navbar": {
+    "buy": "Comprar",
+    "allCars": "Todos los autos",
+    "cars": "Autos",
+    "browseCarsDescription": "Explora nuestro inventario completo de autos usados de calidad",
+    "sedans": "Sedanes",
+    "sedansDescription": "Autos cómodos y eficientes para conducción diaria",
+    "suvs": "SUVs",
+    "suvsDescription": "Vehículos espaciosos con mayor capacidad de carga",
+    "hatchbacks": "Hatchbacks",
+    "hatchbacksDescription": "Autos compactos y versátiles con acceso por puerta trasera",
+    "sell": "Vender",
+    "sellYourCarDescription": "Publica tu vehículo en nuestra plataforma y comienza a venderlo hoy mismo",
+    "financing": "Financiamiento",
+    "aboutUs": "Sobre Nosotros",
+    "login": "Ingresar",
+    "register": "Registrarse",
+    "logout": "Cerrar Sesión",
+    "buyCars": "Comprar Autos",
+    "sellYourCar": "Vende tu Auto",
+    "myListings": "Mis Anuncios",
+    "myListingsDescription": "Gestiona tus anuncios y controla el estado de tus vehículos",
+    "messages": "Mensajes",
+    "profile": "Perfil",
+    "favorites": "Favoritos",
+    "reservations": "Reservas",
+    "account": "Cuenta",
+    "sellerDashboard": "Dashboard de vendedor"
+  },
+  "homePage": {
+    "hero": {
+      "title": "Encuentra tu auto perfecto",
+      "subtitle": "Explora nuestra selección de autos usados con condición garantizada",
+      "searchPlaceholder": "Buscar por marca, modelo o características",
+      "searchButton": "Buscar Autos"
+    },
+    "cta": {
+      "title": "¿Listo para encontrar el auto de tus sueños?",
+      "subtitle": "Explora nuestro amplio inventario de autos usados certificados con informes de historial detallados y calidad garantizada.",
+      "browseAllCars": "Ver Todos los Autos",
+      "sellYourCar": "Vende tu Auto"
+    },
+    "explore_categories": "Explora por categorías",
+    "categories_description": "Encuentra el vehículo perfecto para tus necesidades explorando nuestras categorías especializadas.",
+    "view_category": "Ver categoría",
+    "view_all_cars": "Ver todos los autos",
+    "how_it_works": "Cómo funciona",
+    "buying_process": "Proceso de compra simple y transparente",
+    "process_description": "Nuestro proceso de compra de vehículos está diseñado para ser sencillo, seguro y transparente desde la búsqueda hasta la entrega.",
+    "start_browsing": "Comenzar a explorar",
+    "steps": {
+      "browse": {
+        "title": "Explora y compara",
+        "description": "Navega por nuestro inventario y utiliza los filtros para encontrar el vehículo que mejor se adapte a tus necesidades y presupuesto."
+      },
+      "contact": {
+        "title": "Contacta al vendedor",
+        "description": "Comunícate directamente con el vendedor para hacer preguntas, negociar el precio o programar una visita."
+      },
+      "visit": {
+        "title": "Inspecciona el vehículo",
+        "description": "Visita y prueba el vehículo para verificar su estado y asegurarte de que cumple con tus expectativas."
+      },
+      "purchase": {
+        "title": "Compra segura",
+        "description": "Finaliza la compra con nuestro proceso seguro y recibe asistencia para todos los trámites necesarios."
+      }
+    },
+    "sell_banner": {
+      "title": "¿Quieres vender tu auto?",
+      "description": "Publicar tu vehículo en nuestra plataforma es rápido, fácil y te conecta con miles de compradores potenciales.",
+      "list_now": "Publicar ahora",
+      "learn_more": "Más información"
+    }
+  },
+  "featuredCars": {
+    "title": "Autos Destacados",
+    "allCars": "Todos los Autos",
+    "sedans": "Sedanes",
+    "suvs": "SUVs",
+    "hatchbacks": "Hatchbacks",
+    "viewDetails": "Ver Detalles",
+    "viewAllCars": "Ver Todos los Autos"
+  },
+  "cars": {
+    "brand": "Marca",
+    "model": "Modelo",
+    "year": "Año",
+    "price": "Precio",
+    "mileage": "Kilometraje",
+    "transmission": "Transmisión",
+    "fuel": "Combustible",
+    "pageTitle": "Explora Nuestros Vehículos",
+    "pageSubtitle": "Encuentra el auto perfecto para ti entre nuestra selección de vehículos de calidad garantizada",
+    "filters": {
+      "title": "Filtros",
+      "price": "Precio",
+      "year": "Año",
+      "brand": "Marca",
+      "model": "Modelo",
+      "category": "Categoría",
+      "transmission": "Transmisión",
+      "fuel": "Combustible",
+      "mileage": "Kilometraje",
+      "applyFilters": "Aplicar Filtros",
+      "clearFilters": "Limpiar Filtros",
+      "priceRange": "Rango de Precio",
+      "yearRange": "Rango de Año"
+    },
+    "sort": {
+      "title": "Ordenar por",
+      "newest": "Más recientes",
+      "priceHighToLow": "Precio: Mayor a menor",
+      "priceLowToHigh": "Precio: Menor a mayor",
+      "yearNewest": "Año: Más reciente",
+      "yearOldest": "Año: Más antiguo"
+    },
+    "carCard": {
+      "year": "Año",
+      "mileage": "Kilometraje",
+      "transmission": "Transmisión",
+      "fuel": "Combustible",
+      "viewDetails": "Ver Detalles",
+      "addToFavorites": "Añadir a Favoritos",
+      "removeFromFavorites": "Quitar de Favoritos",
+      "contactSeller": "Contactar Vendedor"
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "page": "Página",
+      "of": "de"
+    },
+    "noResults": "No se encontraron vehículos que coincidan con tu búsqueda",
+    "noCarsInCategory": "No hay vehículos en esta categoría",
+    "loading": "Cargando vehículos...",
+    "error": "Error al cargar los vehículos. Por favor, intenta de nuevo.",
+    "not_found": "Vehículo no encontrado",
+    "for_search": "Para tu búsqueda",
+    "description": "Descripción",
+    "features": "Características",
+    "final_price": "Precio final",
+    "contact": "Contactar",
+    "saved": "Guardado",
+    "save": "Guardar",
+    "vehicle_id": "ID del vehículo",
+    "last_update": "Última actualización",
+    "seller_info": "Información del vendedor",
+    "seller_id": "Vendedor ID",
+    "member_since": "Miembro desde",
+    "send_message": "Enviar mensaje",
+    "similar_to": "Vehículos similares a",
+    "back_to_vehicle": "Volver al vehículo",
+    "similar_description": "Hemos encontrado estos vehículos que podrían interesarte basados en características similares.",
+    "no_similar_found": "No se encontraron vehículos similares",
+    "try_different": "Intenta con diferentes criterios o explora todos nuestros vehículos.",
+    "disclaimer": {
+      "title": "Aviso",
+      "text": "La información y las especificaciones proporcionadas para este vehículo son a modo ilustrativo. Para una información más precisa, le recomendamos verificar el vehículo directamente con el vendedor."
+    },
+    "contactData": {
+      "title": "Contactar al vendedor",
+      "regarding": "Consulta sobre",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "message_placeholder": "Escribe tu mensaje aquí...",
+      "min_chars": "El mensaje debe tener al menos 20 caracteres",
+      "include_phone": "Incluir mi número de teléfono en el mensaje",
+      "send": "Enviar mensaje",
+      "message_too_short": "El mensaje es demasiado corto. Por favor, proporciona más detalles.",
+      "error_sending": "Error al enviar el mensaje. Por favor, intenta de nuevo.",
+      "success_title": "Mensaje enviado",
+      "success_description": "Tu mensaje ha sido enviado correctamente. El vendedor se pondrá en contacto contigo pronto."
+    }
+  },
+  "categories": {
+    "sedan": "Sedán",
+    "sedan_description": "Autos cómodos y eficientes para conducción diaria",
+    "suv": "SUV",
+    "suv_description": "Vehículos espaciosos con mayor capacidad de carga",
+    "hatchback": "Hatchback",
+    "hatchback_description": "Autos compactos y versátiles con acceso por puerta trasera",
+    "pickup": "Pickup",
+    "pickup_description": "Vehículos utilitarios con capacidad de carga y versatilidad",
+    "coupe": "Coupé",
+    "coupe_description": "Autos deportivos con diseño aerodinámico y rendimiento excepcional",
+    "van": "Van",
+    "van_description": "Vehículos utilitarios con capacidad de carga y versatilidad",
+    "convertible": "Convertible",
+    "convertible_description": "Autos deportivos con techo rígido o plegable",
+    "wagon": "Familiar",
+    "wagon_description": "Autos familiares con capacidad de carga y versatilidad"
+  },
+  "howItWorks": {
+    "title": "Cómo Funciona",
+    "steps": {
+      "browseSelect": {
+        "title": "Explorar y Seleccionar",
+        "description": "Explore nuestro extenso inventario de vehículos pre-propiedad certificados con información detallada."
+      },
+      "qualityGuarantee": {
+        "title": "Garantía de Calidad",
+        "description": "Todos nuestros vehículos se someten a una rigurosa inspección de 150 puntos para garantizar la calidad y confiabilidad."
+      },
+      "flexibleFinancing": {
+        "title": "Financiación Flexible",
+        "description": "Elija entre varias opciones de pago, incluida la financiación a través de nuestros socios de confianza."
+      },
+      "securePurchase": {
+        "title": "Compra Segura",
+        "description": "Complete su compra en línea o en persona con nuestro proceso de transacción seguro."
+      }
+    }
+  },
+  "carCategories": {
+    "title": "Explorar por Categoría",
+    "categories": {
+      "sedans": "Sedanes",
+      "suvs": "SUVs",
+      "hatchbacks": "Hatchbacks",
+      "trucks": "Camionetas"
+    },
+    "cars": "autos"
+  },
+  "footer": {
+    "description": "Su mercado de confianza para comprar y vender autos usados de calidad.",
+    "quickLinks": "Enlaces Rápidos",
+    "browseCars": "Explorar Autos",
+    "sellYourCar": "Vende tu Auto",
+    "financingOptions": "Opciones de Financiación",
+    "aboutUs": "Sobre Nosotros",
+    "support": "Soporte",
+    "contactUs": "Contáctenos",
+    "faq": "Preguntas Frecuentes",
+    "termsOfService": "Términos de Servicio",
+    "privacyPolicy": "Política de Privacidad",
+    "cookies": "Cookies",
+    "contact": "Contacto",
+    "address": {
+      "street": "123 Auto Plaza",
+      "city": "Ciudad de México, MX 12345",
+      "email": "Email: info@carmarket.com",
+      "phone": "Teléfono: (555) 123-4567"
+    },
+    "copyright": "Todos los derechos reservados."
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Contáctenos para obtener más información o para ayudarte con cualquier pregunta.",
+    "email": {
+      "title": "Email",
+      "value": "info@carmarket.com"
+    },
+    "phone": {
+      "title": "Teléfono",
+      "value": "Teléfono: (555) 123-4567"
+    },
+    "address": {
+      "title": "Dirección",
+      "value": "123 Auto Plaza, Ciudad de México, MX 12345"
+    },
+    "form": {
+      "title": "Formulario de Contacto",
+      "subtitle": "Envíanos un mensaje y nos pondremos en contacto contigo lo antes posible.",
+      "submit": "Enviar",
+      "submitting": "Enviando...",
+      "genericError": "Ocurrió un error al enviar el formulario",
+      "successMessage": "Mensaje enviado correctamente",
+      "errorMessage": "Error al enviar el mensaje",
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Email",
+      "emailPlaceholder": "Tu email",
+      "subject": "Asunto",
+      "subjectPlaceholder": "Tu asunto",
+      "message": "Mensaje",
+      "messagePlaceholder": "Tu mensaje",
+      "validation": {
+        "nameRequired": "El nombre es requerido",
+        "emailInvalid": "El email no es válido",
+        "subjectRequired": "El asunto es requerido",
+        "messageLength": "El mensaje debe tener al menos 10 caracteres"
+      }
+    }
+  },
+  "about": {
+    "title": "Tu Mercado de Autos de Confianza",
+    "badge": "Sobre Nosotros",
+    "subtitle": "Estamos dedicados a proporcionar la mejor experiencia de compra y venta de autos para nuestros usuarios.",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Aspiramos a simplificar el proceso de compra de autos y proporcionar información transparente para todos los usuarios.",
+      "features": {
+        "performance": {
+          "title": "Alto Rendimiento",
+          "description": "Aplicación rápida y receptiva para una experiencia de usuario optimizada"
+        },
+        "security": {
+          "title": "Máxima Seguridad",
+          "description": "Encriptación avanzada y procesamiento seguro de pagos"
+        }
+      }
+    },
+    "tech": {
+      "title": "Nuestra Tecnología"
+    }
+  },
+  "cookies": {
+    "title": "Política de Cookies",
+    "subtitle": "Información sobre cómo utilizamos cookies en nuestro sitio web",
+    "whatAreCookies": {
+      "title": "¿Qué son las cookies?",
+      "subtitle": "Aprende sobre las cookies y cómo funcionan",
+      "description": "Las cookies son pequeños archivos de texto almacenados en tu dispositivo que nos ayudan a proporcionarte una mejor experiencia de navegación."
+    },
+    "types": {
+      "title": "Tipos de cookies",
+      "subtitle": "Diferentes tipos de cookies que utilizamos",
+      "essential": {
+        "title": "Cookies esenciales",
+        "description": "Necesarias para el funcionamiento del sitio web"
+      },
+      "analytics": {
+        "title": "Cookies de análisis",
+        "description": "Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web"
+      },
+      "functional": {
+        "title": "Cookies funcionales",
+        "description": "Habilitan funcionalidades mejoradas y personalización"
+      },
+      "marketing": {
+        "title": "Cookies de marketing",
+        "description": "Rastrean tu actividad para mostrar anuncios dirigidos"
+      }
+    },
+    "usage": {
+      "title": "¿Cómo utilizamos las cookies?",
+      "description": "Utilizamos cookies para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "subtitle": "Utilizamos cookies para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "items": {
+        "improve": "Mejorar la experiencia del usuario",
+        "analyze": "Analizar el uso del sitio web",
+        "personalize": "Personalizar contenido",
+        "remember": "Recordar tus preferencias"
+      }
+    },
+    "management": {
+      "title": "¿Cómo podemos gestionar las cookies?",
+      "subtitle": "Puedes gestionar las cookies en tu navegador.",
+      "description": "Utilizamos cookies para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "options": {
+        "browser": "En tu navegador",
+        "preferences": "En las preferencias de tu navegador",
+        "thirdParty": "En terceros"
+      }
+    }
+  },
+  "types": {
+    "essential": {
+      "title": "Cookies Esenciales",
+      "description": "Requeridas para que el sitio web funcione correctamente",
+      "required": true
+    },
+    "analytics": {
+      "title": "Cookies de Análisis",
+      "description": "Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web",
+      "required": false
+    },
+    "functional": {
+      "title": "Cookies Funcionales",
+      "description": "Habilitan funcionalidades mejoradas y personalización",
+      "required": false
+    },
+    "marketing": {
+      "title": "Cookies de Marketing",
+      "description": "Rastrean tu actividad para mostrar anuncios dirigidos",
+      "required": false
+    }
+  },
+  "messages": {
+    "title": "Mensajes",
+    "description": "Ver y gestionar tus conversaciones con compradores y vendedores",
+    "inbox": "Bandeja de entrada",
+    "sent": "Enviados",
+    "inbox_description": "Mensajes que has recibido de otros",
+    "sent_description": "Mensajes que has enviado a otros",
+    "archived_description": "Mensajes que has archivado",
+    "refresh": "Actualizar",
+    "subject": "Asunto",
+    "sender": "De",
+    "recipient": "Para",
+    "listing": "Anuncio",
+    "date": "Fecha",
+    "actions": "Acciones",
+    "no_subject": "Sin asunto",
+    "view_message": "Ver mensaje",
+    "mark_as_read": "Marcar como leído",
+    "mark_as_unread": "Marcar como no leído",
+    "archive": "Archivar",
+    "unarchive": "Desarchivar",
+    "delete": "Eliminar",
+    "delete_confirm": "¿Estás seguro de que quieres eliminar este mensaje? Esta acción no se puede deshacer.",
+    "delete_with_related_confirm": "Este mensaje tiene respuestas asociadas. ¿Deseas eliminar también todos los mensajes relacionados? Esta acción no se puede deshacer.",
+    "delete_conversation_confirm": "¿Estás seguro de que quieres eliminar toda esta conversación? Esta acción no se puede deshacer.",
+    "empty_inbox_title": "No hay mensajes en la bandeja de entrada",
+    "empty_inbox_description": "No tienes ningún mensaje en tu bandeja de entrada.",
+    "empty_sent_title": "No hay mensajes enviados",
+    "empty_sent_description": "Aún no has enviado ningún mensaje.",
+    "empty_archived_title": "No hay mensajes archivados",
+    "empty_archived_description": "No tienes ningún mensaje archivado.",
+    "try_again": "Intentar de nuevo",
+    "error_loading": "Error al cargar los mensajes",
+    "error_refreshing": "Error al actualizar los mensajes",
+    "loading": "Cargando mensajes...",
+    "not_found": "No se pudo encontrar el mensaje que buscas",
+    "not_found_title": "Mensaje no encontrado",
+    "back_to_inbox": "Volver a la bandeja de entrada",
+    "from_user": "De: {name}",
+    "to_user": "Para: {name}",
+    "archived": "Mensaje archivado",
+    "unarchived": "Mensaje desarchivado",
+    "deleted": "Mensaje eliminado",
+    "error": "Error",
+    "action_error": "Ocurrió un error al realizar esta acción",
+    "archive_success": "El mensaje ha sido archivado correctamente",
+    "unarchive_success": "El mensaje ha sido desarchivado correctamente",
+    "delete_success": "El mensaje ha sido eliminado correctamente",
+    "deleted_message": "Mensaje eliminado",
+    "about_listing": "Sobre este anuncio",
+    "listing_info": "Información sobre el vehículo en esta conversación",
+    "view_listing": "Ver anuncio",
+    "original_message": "Mensaje original",
+    "new_message": "Mensaje nuevo",
+    "reply": "Responder",
+    "reply_description": "Envía una respuesta a este mensaje",
+    "reply_placeholder": "Escribe tu respuesta aquí...",
+    "min_characters": "Mínimo {count} caracteres requeridos",
+    "send_reply": "Enviar respuesta",
+    "clear": "Limpiar",
+    "reply_error": "Error al enviar respuesta",
+    "reply_min_length": "La respuesta debe tener al menos 20 caracteres",
+    "reply_sent": "Respuesta enviada",
+    "reply_success": "Tu respuesta ha sido enviada correctamente",
+    "error_sending": "Error al enviar tu respuesta. Por favor, intenta de nuevo.",
+    "vehicle": "Vehículo",
+    "phone_number": "Número de teléfono",
+    "you": "Tú",
+    "conversations": "Conversaciones",
+    "conversations_description": "Tus conversaciones con compradores y vendedores",
+    "view_as_conversations": "Ver como Conversaciones",
+    "view_as_traditional": "Ver como Mensajes",
+    "no_conversations": "Aún no tienes conversaciones",
+    "start_conversation": "Inicia una conversación contactando a un vendedor",
+    "start_conversation_description": "Aquí verás tus conversaciones con vendedores y compradores",
+    "conversation_archived": "La conversación ha sido archivada correctamente",
+    "conversation_deleted": "La conversación ha sido eliminada correctamente",
+    "from_buyer": "De Comprador",
+    "to_seller": "Para Vendedor",
+    "back": "Volver",
+    "no_messages": "No hay mensajes en esta conversación",
+    "unread": "No leído",
+    "updated": "Actualizado",
+    "mark_as_read_success": "Mensaje marcado como leído correctamente",
+    "mark_as_unread_success": "Mensaje marcado como no leído correctamente",
+    "from": "De",
+    "to": "Para",
+    "unread_singular": "nuevo",
+    "unread_plural": "nuevos"
+  },
+  "dashboard": {
+    "title": "Dashboard de Vendedor",
+    "subtitle": "Administre y analice sus anuncios de vehículos",
+    "overview": "Resumen",
+    "overview_description": "Métricas clave de sus anuncios de vehículos",
+    "statistics": "Estadísticas",
+    "performance": "Rendimiento",
+    "trends": "Tendencias",
+    "total_listings": "Total de anuncios",
+    "active_listings": "Anuncios activos",
+    "pending_listings": "Anuncios pendientes",
+    "sold_listings": "Vehículos vendidos",
+    "views": "Vistas",
+    "reservations": "Reservas",
+    "messages": "Mensajes",
+    "favorite_adds": "Veces añadido a favoritos",
+    "performance_metrics": "Métricas de rendimiento",
+    "sales": "Ventas",
+    "view_to_reservation": "Tasa de vistas a reservas",
+    "reservation_to_sale": "Tasa de reservas a ventas",
+    "avg_days_to_sell": "Promedio de días para vender",
+    "avg_price": "Precio promedio",
+    "time_period": "Período de tiempo",
+    "last_7_days": "Últimos 7 días",
+    "last_30_days": "Últimos 30 días",
+    "last_90_days": "Últimos 90 días",
+    "last_year": "Último año",
+    "all_time": "Todo el tiempo",
+    "popular_listings": "Anuncios populares",
+    "listing_name": "Nombre del anuncio", 
+    "brand": "Marca",
+    "model": "Modelo",
+    "price": "Precio",
+    "view_details": "Ver detalles",
+    "view_analytics": "Ver análisis",
+    "loading": "Cargando datos del dashboard...",
+    "error": "Error al cargar los datos del dashboard",
+    "no_data": "No hay datos disponibles para mostrar"
+  },
+  "analytics": {
+    "title": "Análisis del Anuncio",
+    "subtitle": "Estadísticas detalladas para su anuncio",
+    "overview": "Resumen general",
+    "visitors": "Visitantes",
+    "unique_visitors": "Visitantes únicos",
+    "page_views": "Vistas de página",
+    "avg_time": "Tiempo promedio en página",
+    "bounce_rate": "Tasa de rebote",
+    "conversion": "Conversión",
+    "listing_details": "Detalles del anuncio",
+    "listing_id": "ID del anuncio",
+    "created": "Creado el",
+    "last_updated": "Última actualización",
+    "activity": "Actividad del anuncio",
+    "activity_over_time": "Actividad a lo largo del tiempo",
+    "daily": "Diario",
+    "weekly": "Semanal",
+    "monthly": "Mensual",
+    "messages_received": "Mensajes recibidos",
+    "inquiries": "Consultas",
+    "back_to_dashboard": "Volver al dashboard",
+    "loading": "Cargando datos de análisis...",
+    "error": "Error al cargar los datos de análisis",
+    "view_listing": "Ver anuncio"
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+    "introduction": {
+      "title": "Introducción",
+      "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+      "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador."
+    },
+    "dataCollection": {
+      "title": "Recopilación de datos",
+      "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+      "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "types": {
+        "personal": {
+          "title": "Datos personales",
+          "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador."
+        },
+        "usage": {
+          "title": "Datos de uso",
+          "description": "Utilizamos tus datos de uso para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador."
+        },
+        "technical": {
+          "title": "Datos técnicos",
+          "description": "Utilizamos tus datos técnicos para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador."
+        }
+      }
+    },
+    "dataUsage": {
+      "title": "Uso de datos",
+      "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+      "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "purposes": { 
+        "service": "Proporcionar servicios",
+        "improvement": "Mejorar servicios",
+        "communication": "Comunicar con usuarios",
+        "security": "Seguridad"
+      }
+    },
+    "dataProtection": {
+      "title": "Protección de datos",
+      "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+      "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "measures": {
+        "encryption": {
+          "title": "Encriptación",
+          "description": "Utilizamos encriptación para proteger tus datos personales."
+        },
+        "access": {
+          "title": "Acceso",
+          "description": "Utilizamos acceso para proteger tus datos personales."
+        },
+        "backup": {
+          "title": "Copia de seguridad",
+          "description": "Utilizamos copia de seguridad para proteger tus datos personales."
+        },
+        "compliance": {
+          "title": "Cumplimiento",
+          "description": "Utilizamos cumplimiento para proteger tus datos personales."
+        }
+      }
+    },
+    "userRights": {
+      "title": "Derechos de los usuarios",
+      "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+      "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "rights": {
+        "access": {
+          "title": "Acceso",
+          "description": "Utilizamos acceso para proteger tus datos personales."
+        },
+        "correction": {
+          "title": "Corrección",
+          "description": "Utilizamos corrección para proteger tus datos personales."
+        },
+        "deletion": {
+          "title": "Eliminación",
+          "description": "Utilizamos eliminación para proteger tus datos personales."
+        },
+        "portability": {
+          "title": "Portabilidad",
+          "description": "Utilizamos portabilidad para proteger tus datos personales."
+        }
+      }
+    },
+    "contact": {
+      "title": "Contacto",
+      "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+      "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "details": {
+        "email": "Email",
+        "address": "Dirección",
+        "phone": "Teléfono" 
+      }
+    }
+  },
+  "terms": {
+    "title": "Términos y Condiciones",
+    "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+    "introduction": {
+      "title": "Introducción",
+      "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+      "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador."
+    },
+    "changes": {
+      "title": "Cambios",
+      "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+      "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "notification": {
+        "title": "Notificación",
+        "description": "Utilizamos notificación para proteger tus datos personales."
+      }
+    },
+    "contact": {
+      "title": "Contacto",
+      "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+      "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "details": {
+        "email": "Email",
+        "address": "Dirección",
+        "phone": "Teléfono"
+      }
+    },
+    "acceptance": {
+      "title": "Aceptación",
+      "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+      "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "conditions": {
+        "title": "Condiciones",
+        "description": "Utilizamos condiciones para proteger tus datos personales."
+      }
+    },
+    "responsibilities": {
+      "title": "Responsabilidades",
+      "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+      "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "items": {
+        "account": {
+          "title": "Cuenta",
+          "description": "Utilizamos cuenta para proteger tus datos personales."
+        },
+        "content": {
+          "title": "Contenido",
+          "description": "Utilizamos contenido para proteger tus datos personales."
+        },
+        "conduct": {
+          "title": "Conducta",
+          "description": "Utilizamos conducta para proteger tus datos personales."
+        },
+        "security": {
+          "title": "Seguridad",
+          "description": "Utilizamos seguridad para proteger tus datos personales."
+        }
+      }
+    },
+    "intellectualProperty": {
+      "title": "Propiedad Intelectual",
+      "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+      "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "items": {
+        "ownership": {
+          "title": "Propiedad",
+          "description": "Utilizamos propiedad para proteger tus datos personales."
+        },
+        "licenses": {
+          "title": "Licencias",
+          "description": "Utilizamos licencias para proteger tus datos personales."
+        },
+        "infringement": {
+          "title": "Infracción",
+          "description": "Utilizamos infracción para proteger tus datos personales."
+        }
+      }
+    },
+    "liability": {
+      "title": "Responsabilidad",
+      "subtitle": "Descubre cómo utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web.",
+      "description": "Utilizamos tus datos personales para mejorar tu experiencia en nuestro sitio web. Si no estás de acuerdo, puedes desactivar las cookies en tu navegador.",
+      "disclaimer": {
+          "title": "Descargo de responsabilidad",
+          "description": "Utilizamos descargo de responsabilidad para proteger tus datos personales."
+      }
+    }
+  },
+  "sell": {
+    "pageTitle": "Vende tu auto con confianza",
+    "pageSubtitle": "Vender tu vehículo nunca ha sido tan fácil. Obtén una valoración justa y conecta con compradores verificados.",
+    "sections": {
+      "valuationCta": {
+        "title": "Obtén una valoración instantánea",
+        "description": "Obtén una valoración aproximada de tu vehículo en segundos. Es gratis y sin compromisos.",
+        "buttonText": "Iniciar valoración"
+      },
+      "listingCta": {
+        "title": "Anuncia tu vehículo ahora",
+        "description": "Crea un anuncio detallado y ponlo a la vista de miles de compradores potenciales.",
+        "buttonText": "Crear anuncio"
+      },
+      "whyUs": {
+        "title": "¿Por qué vender con nosotros?",
+        "description": "Descubre las ventajas de vender tu vehículo en nuestra plataforma.",
+        "reasons": {
+          "audience": {
+            "title": "Audiencia calificada",
+            "description": "Conectamos tu anuncio con compradores reales interesados en tu vehículo."
+          },
+          "security": {
+            "title": "Seguridad garantizada",
+            "description": "Verificamos a todos los compradores para prevenir fraudes y proteger tus datos."
+          },
+          "support": {
+            "title": "Soporte personalizado",
+            "description": "Equipo de atención disponible para ayudarte durante todo el proceso de venta."
+          },
+          "visibility": {
+            "title": "Máxima visibilidad",
+            "description": "Amplia promoción de tu anuncio para llegar a más compradores potenciales."
+          }
+        }
+      },
+      "process": {
+        "title": "Proceso de venta simple",
+        "description": "Vender tu auto es fácil con nuestro proceso de 4 pasos",
+        "steps": {
+          "valuation": {
+            "title": "Valoración",
+            "description": "Obtén una estimación del valor de tu vehículo basada en datos del mercado."
+          },
+          "listing": {
+            "title": "Publica tu anuncio",
+            "description": "Crea un anuncio detallado con fotos e información completa de tu vehículo."
+          },
+          "contact": {
+            "title": "Recibe contactos",
+            "description": "Compradores interesados se pondrán en contacto contigo a través de nuestra plataforma."
+          },
+          "sale": {
+            "title": "Cierra la venta",
+            "description": "Finaliza la transacción con seguridad y completa el traspaso del vehículo."
+          }
+        }
+      },
+      "faq": {
+        "title": "Preguntas frecuentes sobre venta",
+        "items": {
+          "fees": {
+            "question": "¿Cuánto cuesta publicar mi vehículo?",
+            "answer": "Publicar tu vehículo tiene un costo básico gratuito por 30 días. Ofrecemos opciones premium para destacar tu anuncio con costos adicionales."
+          },
+          "time": {
+            "question": "¿Cuánto tiempo tarda en venderse un vehículo?",
+            "answer": "El tiempo promedio de venta es de 21 días, aunque varía según el modelo, año, precio y condición del vehículo."
+          },
+          "payment": {
+            "question": "¿Cómo recibo el pago por mi vehículo?",
+            "answer": "El pago se realiza directamente entre tú y el comprador. Recomendamos transacciones seguras como transferencias bancarias o pagos verificados."
+          },
+          "papers": {
+            "question": "¿Qué documentos necesito para vender mi auto?",
+            "answer": "Necesitarás la tarjeta de circulación, factura original o endosada, identificación oficial, comprobante de domicilio y constancia de situación fiscal para el trámite."
+          }
+        }
+      },
+      "testimonials": {
+        "title": "Lo que dicen nuestros vendedores",
+        "description": "Conoce las experiencias de quienes ya han vendido su vehículo con nosotros"
+      }
+    },
+    "valuation": {
+      "pageTitle": "Valoración de tu vehículo",
+      "pageSubtitle": "Obtén una estimación del valor de tu vehículo en el mercado actual",
+      "form": {
+        "title": "Datos de tu vehículo",
+        "subtitle": "Completa los datos para obtener una valoración aproximada",
+        "step1Title": "Información básica",
+        "step2Title": "Características y estado",
+        "step3Title": "Datos de contacto",
+        "brandLabel": "Marca",
+        "brandPlaceholder": "Selecciona la marca",
+        "modelLabel": "Modelo",
+        "modelPlaceholder": "Ingresa el modelo",
+        "yearLabel": "Año",
+        "yearPlaceholder": "Selecciona el año",
+        "mileageLabel": "Kilometraje",
+        "mileagePlaceholder": "Ingresa el kilometraje",
+        "transmissionLabel": "Transmisión",
+        "fuelTypeLabel": "Combustible",
+        "categoryLabel": "Categoría",
+        "conditionLabel": "Estado general",
+        "conditionOptions": {
+          "excellent": "Excelente",
+          "good": "Bueno",
+          "fair": "Regular",
+          "poor": "Necesita reparaciones"
+        },
+        "extrasLabel": "Características adicionales",
+        "extrasPlaceholder": "Selecciona las características",
+        "extras": {
+          "airConditioning": "Aire acondicionado",
+          "leatherSeats": "Asientos de piel",
+          "sunroof": "Techo solar",
+          "navigation": "Sistema de navegación",
+          "parkingSensors": "Sensores de estacionamiento",
+          "reverseCamera": "Cámara de reversa",
+          "alloyWheels": "Rines de aleación",
+          "bluetooth": "Bluetooth"
+        },
+        "contactNameLabel": "Nombre completo",
+        "contactNamePlaceholder": "Ingresa tu nombre",
+        "contactEmailLabel": "Correo electrónico",
+        "contactEmailPlaceholder": "Ingresa tu correo",
+        "contactPhoneLabel": "Teléfono (opcional)",
+        "contactPhonePlaceholder": "Ingresa tu teléfono",
+        "termsLabel": "Acepto los términos y condiciones",
+        "privacyLabel": "He leído la política de privacidad",
+        "submitButton": "Obtener valoración",
+        "backButton": "Anterior",
+        "nextButton": "Siguiente",
+        "requiredField": "Campo requerido",
+        "invalidEmail": "Correo electrónico inválido",
+        "termsRequired": "Debes aceptar los términos y condiciones"
+      },
+      "result": {
+        "title": "Valoración estimada",
+        "subtitle": "Basada en vehículos similares en el mercado",
+        "estimatedValue": "Valor estimado",
+        "minValue": "Valor mínimo",
+        "maxValue": "Valor máximo",
+        "marketAnalysis": "Análisis de mercado",
+        "demandLevel": "Nivel de demanda",
+        "timeOnMarket": "Tiempo promedio en mercado",
+        "days": "días",
+        "similarListings": "Anuncios similares",
+        "recommendedPrice": "Precio recomendado para venta",
+        "nextStepsTitle": "Próximos pasos",
+        "createListing": "Crear anuncio",
+        "requestInspection": "Solicitar inspección",
+        "valuationExpiry": "Esta valoración es válida hasta",
+        "disclaimer": "Esta valoración es una estimación basada en datos del mercado y puede variar según la condición específica del vehículo."
+      },
+      "resultSection": {
+        "title": "Valoración estimada",
+        "subtitle": "Basada en vehículos similares en el mercado",
+        "estimatedValue": "Valor estimado",
+        "minimum": "Valor mínimo",
+        "maximum": "Valor máximo",
+        "recommended": "Precio recomendado para venta",
+        "marketAnalysis": "Análisis de mercado",
+        "demandLevel": "Nivel de demanda",
+        "demand":{
+          "low": "Bajo",
+          "medium": "Medio",
+          "high": "Alto",
+          "veryHigh": "Muy alto"
+        },
+        "timeOnMarket": "Tiempo promedio en mercado",
+        "averageSalesTime": "Tiempo promedio de venta",
+        "days": "días",
+        "vehicles": "vehículos",
+        "similarListings": "Anuncios similares",
+        "nextStepsTitle": "Próximos pasos",
+        "createListing": "Crear anuncio",
+        "requestInspection": "Solicitar inspección",
+        "valuationExpiry": "Esta valoración es válida hasta",
+        "disclaimer": "Esta valoración es una estimación basada en datos del mercado y puede variar según la condición específica del vehículo."
+      }
+    },
+    "listing": {
+      "pageTitle": "Crear anuncio",
+      "pageSubtitle": "Completa la información para publicar tu vehículo",
+      "editTitle": "Editar anuncio",
+        "editSubtitle": "Edita la información de tu vehículo para actualizar tu anuncio",
+      "form": {
+        "step1Title": "Datos básicos",
+        "step2Title": "Características técnicas",
+        "step3Title": "Descripción y fotos",
+        "step4Title": "Precio y condiciones",
+        "step5Title": "Información de contacto",
+        "brandLabel": "Marca",
+        "modelLabel": "Modelo",
+        "yearLabel": "Año",
+        "categoryLabel": "Categoría",
+        "transmissionLabel": "Transmisión",
+        "fuelTypeLabel": "Combustible",
+        "mileageLabel": "Kilometraje",
+        "mileagePlaceholder": "Ej. 45000",
+        "colorLabel": "Color",
+        "colorPlaceholder": "Ej. Rojo metálico",
+        "vinLabel": "Número de VIN (opcional)",
+        "vinPlaceholder": "Número de identificación del vehículo",
+        "licensePlateLabel": "Placa (opcional)",
+        "licensePlatePlaceholder": "Ej. ABC-1234",
+        "featuresLabel": "Características",
+        "featuresPlaceholder": "Selecciona las características",
+        "descriptionLabel": "Descripción",
+        "descriptionPlaceholder": "Describe tu vehículo detalladamente incluyendo estado, historial y cualquier información relevante...",
+        "locationLabel": "Ubicación",
+        "locationPlaceholder": "Ej. Ciudad de México, CDMX",
+        "priceLabel": "Precio (MXN)",
+        "pricePlaceholder": "Ej. 250000",
+        "negotiableLabel": "Precio negociable",
+        "acceptsTradeLabel": "Acepta intercambio",
+        "imagesLabel": "Fotos del vehículo",
+        "imagesDescription": "Sube hasta 20 fotos de tu vehículo. Incluye diferentes ángulos, interior y detalles importantes.",
+        "imagesDropzoneText": "Arrastra fotos aquí o haz clic para seleccionar",
+        "documentsLabel": "Documentos (opcional)",
+        "documentsDescription": "Puedes subir documentos como la tarjeta de circulación o comprobantes de servicio.",
+        "documentsDropzoneText": "Arrastra documentos aquí o haz clic para seleccionar",
+        "sellerNameLabel": "Nombre",
+        "sellerNamePlaceholder": "Tu nombre completo",
+        "sellerEmailLabel": "Correo electrónico",
+        "sellerEmailPlaceholder": "Tu correo electrónico",
+        "sellerPhoneLabel": "Teléfono (opcional)",
+        "sellerPhonePlaceholder": "Tu número de teléfono",
+        "termsLabel": "Acepto los términos y condiciones",
+        "submitButton": "Publicar anuncio",
+        "previewButton": "Vista previa",
+        "draftButton": "Guardar borrador",
+        "backButton": "Anterior",
+        "nextButton": "Siguiente",
+        "savingDraft": "Guardando borrador...",
+        "draftSaved": "Borrador guardado",
+        "publishingListing": "Publicando anuncio...",
+        "listingPublished": "Anuncio publicado correctamente",
+        "errors": {
+          "required": "Este campo es obligatorio",
+          "invalidEmail": "Correo electrónico inválido",
+          "minLength": "Debe tener al menos {0} caracteres",
+          "maxLength": "Debe tener como máximo {0} caracteres",
+          "numberOnly": "Solo se permiten números",
+          "minValue": "El valor mínimo es {0}",
+          "maxValue": "El valor máximo es {0}",
+          "minImages": "Debes subir al menos {0} imágenes",
+          "maxImages": "Puedes subir máximo {0} imágenes",
+          "invalidFileType": "Tipo de archivo no soportado",
+          "maxFileSize": "El archivo excede el tamaño máximo de {0}MB"
+        }
+      },
+      "preview": {
+        "title": "Vista previa del anuncio",
+        "editButton": "Editar",
+        "publishButton": "Publicar anuncio",
+        "draftButton": "Guardar como borrador"
+      }
+    },
+    "myListings": {
+      "pageTitle": "Mis Anuncios",
+      "pageSubtitle": "Gestiona tus vehículos publicados, editando información o cambiando su estado",
+      "tabs": {
+        "active": "Activos",
+        "pending": "Pendientes",
+        "sold": "Vendidos",
+        "expired": "Expirados",
+        "draft": "Borradores",
+        "rejected": "Rechazados",
+        "approved": "Aprobados"
+      },
+      "table": {
+        "vehicle": "Vehículo",
+        "price": "Precio",
+        "status": "Estado",
+        "views": "Visitas",
+        "contacts": "Contactos",
+        "publishDate": "Publicado"
+      },
+      "status": {
+        "active": "Activo",
+        "pending": "En revisión",
+        "sold": "Vendido",
+        "expired": "Expirado",
+        "draft": "Borrador",
+        "rejected": "Rechazado",
+        "approved": "Aprobado"
+      },
+      "actions": {
+        "view": "Ver anuncio",
+        "edit": "Editar",
+        "markAsSold": "Marcar como vendido",
+        "pause": "Pausar anuncio",
+        "activate": "Activar anuncio",
+        "feature": "Destacar anuncio",
+        "renew": "Renovar anuncio",
+        "delete": "Eliminar anuncio"
+      },
+      "empty": {
+        "title": "No hay anuncios",
+        "description": "Todavía no has publicado ningún vehículo en esta categoría",
+        "actionButton": "Publicar un vehículo"
+      },
+      "deleteConfirm": {
+        "title": "¿Eliminar anuncio?",
+        "description": "Esta acción no se puede deshacer. El anuncio será eliminado permanentemente.",
+        "cancelButton": "Cancelar",
+        "confirmButton": "Sí, eliminar"
+      }
+    }
+  },
+  "admin": {
+    "title": "Panel de administración",
+    "pageSubtitle": "Gestiona tu sitio web y administra usuarios",
+    "stats": {
+      "totalListings": "Total de anuncios",
+      "pendingListings": "Anuncios pendientes",
+      "approvedListings": "Anuncios aprobados",
+      "rejectedListings": "Anuncios rechazados",
+      "changesRequestedListings": "Anuncios con cambios solicitados",
+      "totalUsers": "Total de usuarios",
+      "newListingsToday": "Nuevos anuncios hoy"
+    }
+  },
+  "formRecovery": {
+    "title": "Recuperar formulario",
+    "recover": "Recuperar formulario",
+    "discard": "Descartar cambios",
+    "lastEdited": "Última edición",
+    "description": "¿Qué deseas hacer con el formulario guardado?",
+    "progress": "Progreso"
+  },
+  "user": {
+    "reservations":{
+      "title": "Mis reservas",
+      "subtitle": "Gestiona tus reservas",
+      "past": "Pasadas",
+      "active": "Activas",
+      "pending": "Pendientes",
+      "expires": "Expira el",
+      "deposit": "Depósito",
+      "price": "Precio",
+      "contact_seller": "Contactar al vendedor",
+      "no_pending_reservations": "No tienes reservas pendientes",
+      "no_pending_reservations_description": "Puedes hacer una reserva en el listado de vehículos",
+      "status": {
+        "pending": "Pendiente",
+        "active": "Activa",
+        "paid": "Pagado",
+        "refunded": "Reembolsado",
+        "failed": "Fallido",
+        "expired": "Expirado",
+        "cancelled": "Cancelado",
+        "completed": "Completado"
+      },
+      "check_payment": "Revisar pago",
+      "view_details": "Ver detalles",
+      "no_reservations": "No tienes reservas",
+      "no_reservations_description": "Puedes hacer una reserva en el listado de vehículos",
+      "no_past_reservations": "No tienes reservas pasadas",
+      "no_past_reservations_description": "Puedes hacer una reserva en el listado de vehículos",
+      "no_active_reservations": "No tienes reservas activas",
+      "no_active_reservations_description": "Puedes hacer una reserva en el listado de vehículos",
+      "browse_cars": "Explorar vehículos",
+      "table": {
+        "car": "Vehículo",
+        "price": "Precio",
+        "status": "Estado",
+        "actions": "Acciones"
+      }
+    },
+    "profile": {
+      "title": "Perfil de usuario",
+      "subtitle": "Gestiona tu perfil de usuario"
+    }
+  },
+  "reservation": {
+    "error_title": "Error al reservar",
+    "view_reservations": "Ver reservas",
+    "view_car_details": "Ver vehículo",
+    "next_steps_title": "Pasos siguientes",
+    "next_steps_description": "Para finalizar la reserva, sigue estos pasos:",
+    "expires_in_48": "Expira en 48 horas",
+    "amount": "Cantidad",
+    "success_title": "Reserva exitosa",
+    "success_description": "Tu reserva ha sido confirmada con éxito. Ahora puedes disfrutar de tu vehículo."
+  }
+} 
