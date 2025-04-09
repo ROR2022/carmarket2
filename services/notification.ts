@@ -94,12 +94,12 @@ export const NotificationService = {
     const { data, error } = await supabase
       .from('notifications')
       .insert({
-        userId: userId,
+        userid: userId,
         type,
         title,
         message,
         link,
-        relatedId: relatedId,
+        relatedid: relatedId,
         read: false
       })
       .select('id')
@@ -123,9 +123,9 @@ export const NotificationService = {
     const { data, error } = await supabase
       .from('notifications')
       .select('*')
-      .eq('userId', userId)
+      .eq('userid', userId)
       .eq('read', false)
-      .order('createdAt', { ascending: false });
+      .order('createdat', { ascending: false });
     
     if (error) {
       console.error('Error fetching unread notifications:', error);
@@ -135,14 +135,14 @@ export const NotificationService = {
     // Mapear a la interfaz de la aplicación
     return (data || []).map(notif => ({
       id: notif.id,
-      userId: notif.userId,
+      userId: notif.userid,
       type: notif.type as NotificationType,
       title: notif.title,
       message: notif.message,
       link: notif.link,
-      relatedId: notif.relatedId,
+      relatedId: notif.relatedid,
       read: notif.read,
-      createdAt: notif.createdAt
+      createdAt: notif.createdat
     }));
   },
   
@@ -157,8 +157,8 @@ export const NotificationService = {
     const { data, error } = await supabase
       .from('notifications')
       .select('*')
-      .eq('userId', userId)
-      .order('createdAt', { ascending: false })
+      .eq('userid', userId)
+      .order('createdat', { ascending: false })
       .limit(limit);
     
     if (error) {
@@ -169,14 +169,14 @@ export const NotificationService = {
     // Mapear a la interfaz de la aplicación
     return (data || []).map(notif => ({
       id: notif.id,
-      userId: notif.userId,
+      userId: notif.userid,
       type: notif.type as NotificationType,
       title: notif.title,
       message: notif.message,
       link: notif.link,
-      relatedId: notif.relatedId,
+      relatedId: notif.relatedid,
       read: notif.read,
-      createdAt: notif.createdAt
+      createdAt: notif.createdat
     }));
   },
   
@@ -208,7 +208,7 @@ export const NotificationService = {
     const { error } = await supabase
       .from('notifications')
       .update({ read: true })
-      .eq('userId', userId)
+      .eq('userid', userId)
       .eq('read', false);
     
     if (error) {
@@ -227,7 +227,7 @@ export const NotificationService = {
     const { count, error } = await supabase
       .from('notifications')
       .select('*', { count: 'exact', head: true })
-      .eq('userId', userId)
+      .eq('userid', userId)
       .eq('read', false);
     
     if (error) {
