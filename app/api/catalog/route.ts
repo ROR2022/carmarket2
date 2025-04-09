@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createClient } from "@/utils/supabase/server";
 import { CatalogService } from "@/services/catalog";
+import { CarCategory } from "@/types/car";
 
 export async function POST(request: NextRequest) {
     const supabase = await createClient();
@@ -26,18 +27,19 @@ export async function POST(request: NextRequest) {
     if (methodSelected === 'searchListings') {
         type FilterParams = {
             brand?: string[];
-            category?: string[];
+            categories?: CarCategory[];
             minPrice?: number;
             maxPrice?: number;
             searchTerm?: string;
             };
         const tempFilters:FilterParams = {};
         const { filters } = sentParams;
+        console.warn("frontend filters: ", filters);
         if (filters.brand && filters.brand.length > 0 && filters.brand[0] !== '') {
             tempFilters.brand = filters.brand;
         }
-        if (filters.category && filters.category.length > 0 && filters.category[0] !== '') {
-            tempFilters.category = filters.category;
+        if (filters.categories && filters.categories.length > 0 && filters.categories[0] !== '') {
+            tempFilters.categories = filters.categories;
         }
         if (filters.minPrice && filters.minPrice > 0) {
             tempFilters.minPrice = filters.minPrice;
@@ -48,7 +50,7 @@ export async function POST(request: NextRequest) {
         if (filters.searchTerm && filters.searchTerm !== '') {
             tempFilters.searchTerm = filters.searchTerm;
         }
-
+        console.warn("route Filters: ", tempFilters);
         const result = await CatalogService.searchListings(tempFilters, sentParams.page, sentParams.pageSize, sentParams.sort);
         return NextResponse.json(result);
     }
