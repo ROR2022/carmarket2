@@ -13,6 +13,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Car Marketplace - Mercado de Autos",
   description: "Encuentra y compra autos usados de calidad",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://carmarket.example.com'),
 }
 
 export default function RootLayout({

@@ -89,7 +89,7 @@ export interface ListingFormData {
   // Precio y condiciones
   price: number;
   negotiable: boolean;
-  acceptsTrade: boolean;
+  acceptsTrade?: boolean;
   
   // Imágenes y documentos
   images: File[] | string[];

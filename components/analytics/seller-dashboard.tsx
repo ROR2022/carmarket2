@@ -85,7 +85,7 @@ export function SellerDashboard({ sellerId }: SellerDashboardProps) {
     };
 
     loadStats();
-  }, [sellerId, period, toast]);
+  }, [sellerId, period]);
 
   // Cargar datos de rendimiento
   useEffect(() => {
@@ -114,7 +114,7 @@ export function SellerDashboard({ sellerId }: SellerDashboardProps) {
     };
 
     loadPerformance();
-  }, [sellerId, toast]);
+  }, [sellerId]);
 
   // Exportar datos de reservas
   const handleExportData = async () => {

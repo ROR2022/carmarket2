@@ -60,7 +60,7 @@ export function NotificationBadge() {
     // Actualizar cada minuto
     const interval = setInterval(loadUnreadCount, 60000);
     return () => clearInterval(interval);
-  }, []);
+  }, [user]);
 
   // Cargar las notificaciones al abrir el dropdown
   const handleOpenChange = async (open: boolean) => {

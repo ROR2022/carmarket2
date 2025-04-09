@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState, useMemo } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { CarCard } from "@/components/car/car-card";
 import { CarFilters } from "@/components/car/car-filters";
@@ -31,43 +31,6 @@ type TMyParasm = {
   maxPrice?: number;
   searchTerm?: string;
 };
-interface GetSearchParamsProps {
-  setMyParams: (myparams: TMyParasm) => void;
-}
-
-const GetSearchParams = ({ setMyParams }: GetSearchParamsProps) => {
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const fullUrl = pathname + searchParams.toString();
-  const brand = searchParams.get("brand");
-  const minPrice = searchParams.get("minPrice");
-  const maxPrice = searchParams.get("maxPrice");
-  const category = searchParams.get("category");
-  const searchTerm = searchParams.get("searchTerm");
-
-  
-
-  useEffect(() => {
-    const params: TMyParasm = {
-      brand: "",
-      minPrice: 0,
-      maxPrice: 0,
-      category: "",
-      searchTerm: "",
-    };
-    if (brand) params.brand = brand;
-    if (minPrice) params.minPrice = parseInt(minPrice);
-    if (maxPrice) params.maxPrice = parseInt(maxPrice);
-    if (category) params.category = category;
-    if (searchTerm) params.searchTerm = searchTerm;
-
-    setMyParams(params);
-    console.warn("GetSearchParams: ", params);
-    console.warn("GetSearchParams fullUrl: ", fullUrl);
-  }, [fullUrl]);
-
-  return null;
-};
 
 const initialFilters: CarFiltersType = {
   searchTerm: "",
@@ -77,16 +40,54 @@ const initialFilters: CarFiltersType = {
   maxPrice: undefined,
 };
 
-export default function CarsPage() {
+// Client component that uses navigation hooks
+function CarsPageContent() {
+  console.log("DEBUG: CarsPage component rendering");
   const { t } = useTranslation();
-  //const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
   const router = useRouter();
+
+  // Track component mount/unmount for debugging
+  useEffect(() => {
+    console.log("DEBUG: CarsPage component mounted");
+    return () => {
+      console.log("DEBUG: CarsPage component unmounting");
+    };
+  }, []);
+
+  // Extract URL parameters directly in the component using useMemo
+  const urlParams = useMemo(() => {
+    console.log("DEBUG: Computing urlParams");
+    
+    // Special case: detect empty URL (no parameters)
+    const hasNoParams = searchParams.toString() === '';
+    if (hasNoParams) {
+      console.log("DEBUG: Empty URL parameters detected, returning empty params object");
+      return {};
+    }
+    
+    const params: TMyParasm = {};
+    
+    const brand = searchParams.get("brand");
+    const minPrice = searchParams.get("minPrice");
+    const maxPrice = searchParams.get("maxPrice");
+    const category = searchParams.get("category");
+    const searchTerm = searchParams.get("searchTerm");
+    
+    if (brand) params.brand = brand;
+    if (minPrice) params.minPrice = parseInt(minPrice);
+    if (maxPrice) params.maxPrice = parseInt(maxPrice);
+    if (category) params.category = category;
+    if (searchTerm) params.searchTerm = searchTerm;
+    
+    return params;
+  }, [searchParams]);
 
   // Estados
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [cars, setCars] = useState<Car[]>([]);
-  const [myParams, setMyParams] = useState<TMyParasm>({});
   const [pagination, setPagination] = useState<PaginationInfo>({
     currentPage: 1,
     totalPages: 1,
@@ -95,25 +96,6 @@ export default function CarsPage() {
     hasNext: false,
     hasPrev: false,
   });
-
-  // Inicializar filtros desde parámetros de URL si existen
-  /* const initialFilters = React.useMemo(() => {
-    const searchTerm = searchParams.get('searchTerm');
-    const brand = searchParams.get('brand');
-    const minPrice = searchParams.get('minPrice');
-    const maxPrice = searchParams.get('maxPrice');
-    const category = searchParams.get('category');
-    
-    const filters: CarFiltersType = {};
-    
-    if (searchTerm) filters.searchTerm = searchTerm;
-    if (brand) filters.brands = [brand];
-    if (category) filters.categories = [category as CarCategory];
-    if (minPrice) filters.minPrice = parseInt(minPrice);
-    if (maxPrice) filters.maxPrice = parseInt(maxPrice);
-    
-    return filters;
-  }, [searchParams]); */
 
   const [filters, setFilters] = useState<CarFiltersType>(initialFilters);
   const [sortOption, setSortOption] = useState<SortOption>("created_desc");
@@ -151,69 +133,72 @@ export default function CarsPage() {
     };
   }, []);
 
-  // Efecto para inicializar los filtros desde URL al montar el componente
-  useEffect(() => {
-    // aplicar los filtros iniciales si hay algún parámetro
-    const tempFilters = { ...initialFilters };
-    if (
-      !filters.brands ||
-      (filters.brands && filters.brands[0] !== myParams.brand)
-    ) {
-      tempFilters.brands = [myParams.brand || ""];
+  // Replace the filters useEffect with a useMemo hook
+  const derivedFilters = useMemo(() => {
+    console.log("DEBUG: Computing derivedFilters from urlParams");
+    
+    // Explicit handling for empty URL parameters - reset to initial filters
+    if (Object.keys(urlParams).length === 0) {
+      console.log("DEBUG: No URL parameters detected, resetting to initial filters");
+      return initialFilters;
     }
-    if (
-      !filters.categories ||
-      (filters.categories && filters.categories[0] !== myParams.category)
-    ) {
-      tempFilters.categories = [myParams.category as CarCategory];
+    
+    // For partial parameters, start with initial filters and override
+    const newFilters: CarFiltersType = { ...initialFilters };
+    
+    if (urlParams.brand) {
+      newFilters.brands = [urlParams.brand];
+    } else {
+      newFilters.brands = [];
     }
-    if (!filters.minPrice || filters.minPrice !== myParams.minPrice) {
-      tempFilters.minPrice = myParams.minPrice;
+    
+    if (urlParams.category) {
+      newFilters.categories = [urlParams.category as CarCategory];
+    } else {
+      newFilters.categories = [];
     }
-    if (
-      !filters.maxPrice ||
-      (filters.maxPrice && filters.maxPrice !== myParams.maxPrice)
-    ) {
-      tempFilters.maxPrice = myParams.maxPrice;
+    
+    if (urlParams.minPrice !== undefined) {
+      newFilters.minPrice = urlParams.minPrice;
     }
-    if (!filters.searchTerm || filters.searchTerm !== myParams.searchTerm) {
-      tempFilters.searchTerm = myParams.searchTerm;
+    
+    if (urlParams.maxPrice !== undefined) {
+      newFilters.maxPrice = urlParams.maxPrice;
     }
-    console.warn("actualizando filters1... ", tempFilters);
-    // Si no hay cambios en los filtros, no actualizar el estado
-    if (JSON.stringify(tempFilters) !== JSON.stringify(filters)) {
-    setFilters(tempFilters);
+    
+    if (urlParams.searchTerm) {
+      newFilters.searchTerm = urlParams.searchTerm;
+    } else {
+      newFilters.searchTerm = "";
     }
-  }, [
-    myParams.brand,
-    myParams.minPrice,
-    myParams.maxPrice,
-    myParams.category,
-    myParams.searchTerm,
-  ]);
+    
+    console.log("DEBUG: Derived filters result:", newFilters);
+    return newFilters;
+  }, [urlParams]);
 
+  // Log all important state changes to help debug
   useEffect(() => {
-    const loadCars = async () => {
-      try {
-        const response = await axios.post("/api/catalog", {
-          methodSelected: "searchListings",
-          sentParams: {
-            filters: filters,
-            page: pagination.currentPage,
-            pageSize: pagination.pageSize,
-            sort: sortOption,
-          },
-        });
-        const result = response.data;
-        console.warn("Cars loaded:", result);
-        setCars(result.cars);
-      } catch (error) {
-        console.error("Error loading cars:", error);
-        
-      }
+    console.log("DEBUG: === STATE CHANGE LOG ===");
+    console.log("urlParams:", urlParams);
+    console.log("filters:", filters);
+    console.log("pagination:", pagination);
+    console.log("sortOption:", sortOption);
+    console.log("userInitiatedChange:", userInitiatedChange.current);
+    console.log("initialLoadRef:", initialLoadRef.current);
+    console.log("===========================");
+  }, [urlParams, filters, pagination, sortOption]);
+
+  // Effect to update filters state only when derivedFilters actually changes
+  useEffect(() => {
+    // Only update filters if they're actually different
+    const currentFiltersStr = JSON.stringify(filters);
+    const newFiltersStr = JSON.stringify(derivedFilters);
+    
+    if (currentFiltersStr !== newFiltersStr) {
+      console.log("DEBUG: Updating filters with derivedFilters", derivedFilters);
+      setFilters(derivedFilters);
     }
-    loadCars();
-  }, [filters]);
+  }, [derivedFilters, filters]);
 
   // Cargar marcas disponibles
   useEffect(() => {
@@ -234,40 +219,31 @@ export default function CarsPage() {
     loadBrands();
   }, []);
 
-  // Cargar autos al iniciar o cambiar filtros/página
+  // Consolidated car loading effect with proper debouncing and error handling
   useEffect(() => {
+    console.log("DEBUG: Consolidated loadCars useEffect running", { 
+      filters, 
+      currentPage: pagination.currentPage,
+      userInitiated: userInitiatedChange.current
+    });
+    
     const loadCars = async () => {
-      // Si ya se cargó inicialmente y no es un cambio iniciado por el usuario, no recargar
+      // Skip loading if conditions aren't right
       if (initialLoadRef.current && !userInitiatedChange.current) {
         console.log("Skipping automatic reload - no user initiated change");
         return;
       }
 
-      // Si la página no está visible, posponer la carga
+      // Skip loading if page isn't visible
       if (!isVisibleRef.current) {
         console.log("Page not visible, postponing load");
         return;
       }
 
-      console.log(
-        "Loading cars with filters:",
-        filters,
-        "page:",
-        pagination.currentPage,
-        "sort:",
-        sortOption
-      );
-
       setLoading(true);
       setError(null);
 
       try {
-        /* const result = await CatalogService.searchListings(
-          filters,
-          pagination.currentPage,
-          pagination.pageSize,
-          sortOption
-        ); */
         const response = await axios.post("/api/catalog", {
           methodSelected: "searchListings",
           sentParams: {
@@ -277,25 +253,23 @@ export default function CarsPage() {
             sort: sortOption,
           },
         });
+        
         const result = response.data;
-        console.warn("Cars loaded:", result);
+        console.log("Cars loaded successfully:", result);
 
         setCars(result.cars);
 
-        // Actualizar la paginación de manera selectiva para evitar ciclos
-        // Usamos una función para garantizar que estamos trabajando con el último estado
+        // Update pagination only if values actually changed
         setPagination((prev) => {
-          // Verificar si realmente hubo cambios para evitar actualizaciones innecesarias
           if (
             prev.totalPages === result.pagination.totalPages &&
             prev.totalItems === result.pagination.totalItems &&
             prev.hasNext === result.pagination.hasNext &&
             prev.hasPrev === result.pagination.hasPrev
           ) {
-            return prev; // No hay cambios reales, evitar actualización
+            return prev; // No actual changes, avoid re-render
           }
 
-          // Actualizar solo si hay cambios
           return {
             ...prev,
             totalPages: result.pagination.totalPages,
@@ -305,50 +279,72 @@ export default function CarsPage() {
           };
         });
 
-        // Marcar que ya se realizó la carga inicial
+        // Mark initial load as completed
         initialLoadRef.current = true;
       } catch (err) {
         console.error("Error fetching cars:", err);
         setError(t("cars.error"));
+        setCars([]); // Clear cars on error
       } finally {
         setLoading(false);
-        // Reiniciar el indicador de cambio iniciado por el usuario
         userInitiatedChange.current = false;
       }
     };
 
+    // Use debouncing to prevent rapid consecutive calls
+    // Run immediately for user-initiated changes, or with a slight delay for auto-changes
+    const timer = setTimeout(
+      loadCars, 
+      userInitiatedChange.current ? 0 : 100
+    );
+    
+    return () => clearTimeout(timer);
+  }, [filters, pagination.currentPage, pagination.pageSize, sortOption, t]);
 
-
-    // Ejecutar inmediatamente si tenemos un cambio iniciado por el usuario
-  
-    if (userInitiatedChange.current ) {
-      loadCars();
+  // Track pathname changes to detect navigation to base /cars path
+  useEffect(() => {
+    console.log("DEBUG: Pathname changed to:", pathname);
+    
+    // Check if we're at exactly /cars with no query parameters
+    if (pathname === '/cars' && searchParams.toString() === '') {
+      console.log("DEBUG: Detected navigation to base /cars path");
+      
+      // Only reset if we actually have filters active
+      if (filters.searchTerm || 
+          filters.brands?.length || 
+          filters.categories?.length || 
+          filters.minPrice || 
+          filters.maxPrice) {
+            
+        console.log("DEBUG: Resetting filters due to navigation to /cars");
+        userInitiatedChange.current = true;
+        setFilters(initialFilters);
+        setPagination(prev => ({ ...prev, currentPage: 1 }));
+      }
     }
-    // O con un pequeño retraso para evitar carreras de condición en actualizaciones rápidas
-    else {
-      const timer = setTimeout(() => {
-        loadCars();
-      }, 50);
+  }, [pathname, searchParams, filters, initialFilters]);
 
-      return () => clearTimeout(timer);
-    }
-  }, [pagination.currentPage, pagination.pageSize, filters, sortOption, t]);
-
-  // Gestionar cambios de página
+  // Improved handler for page changes 
   const handlePageChange = (page: number) => {
-    // Marcar que este es un cambio iniciado por el usuario
+    console.log("DEBUG: handlePageChange", { page, current: pagination.currentPage });
+    
+    // Skip if same page
+    if (page === pagination.currentPage) return;
+    
+    // Mark as user initiated
     userInitiatedChange.current = true;
 
+    // Update pagination with callback to ensure we use the latest state
     setPagination((prev) => ({
       ...prev,
       currentPage: page,
     }));
 
-    // Scroll al inicio de la lista
+    // Scroll to top
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Función para actualizar la URL con los filtros actuales
+  // Improved URL update function
   const updateUrlWithFilters = (newFilters: CarFiltersType) => {
     const params = new URLSearchParams();
 
@@ -361,46 +357,75 @@ export default function CarsPage() {
     if (newFilters.maxPrice)
       params.set("maxPrice", newFilters.maxPrice.toString());
 
-    // Actualizar la URL sin recargar la página
+    // Update URL without reloading the page
     const url = params.toString() ? `?${params.toString()}` : "";
+    console.log("DEBUG: Updating URL", url);
     router.push(`/cars${url}`, { scroll: false });
   };
 
-  // Aplicar filtros
+  // Improved filter application handler
   const handleApplyFilters = (newFilters: CarFiltersType) => {
-    // Marcar que este es un cambio iniciado por el usuario
+    console.log("DEBUG: handleApplyFilters", newFilters);
+    
+    // Compare if filters actually changed
+    const currentFiltersStr = JSON.stringify(filters);
+    const newFiltersStr = JSON.stringify(newFilters);
+    
+    if (currentFiltersStr === newFiltersStr) {
+      console.log("DEBUG: Filters unchanged, skipping update");
+      return;
+    }
+    
+    // Mark as user initiated
     userInitiatedChange.current = true;
 
+    // Update filters
     setFilters(newFilters);
-    setPagination((prev) => ({
-      ...prev,
-      currentPage: 1, // Volver a la primera página al aplicar filtros
-    }));
-
-    // Actualizar la URL con los nuevos filtros
-    updateUrlWithFilters(newFilters);
-  };
-
-  // Limpiar filtros
-  const handleClearFilters = () => {
-    // Marcar que este es un cambio iniciado por el usuario
-    userInitiatedChange.current = true;
-
-    setFilters({});
+    
+    // Reset to first page
     setPagination((prev) => ({
       ...prev,
       currentPage: 1,
     }));
 
-    // Limpiar la URL
+    // Update URL for bookmarking/sharing
+    updateUrlWithFilters(newFilters);
+  };
+
+  // Add a dedicated handler for navigating to all cars view
+  const handleViewAllCars = () => {
+    console.log("DEBUG: handleViewAllCars called");
+    userInitiatedChange.current = true;
+    
+    // Explicitly reset all filters to initial state
+    setFilters(initialFilters);
+    
+    // Reset pagination
+    setPagination(prev => ({ 
+      ...prev, 
+      currentPage: 1 
+    }));
+    
+    // Navigate to base cars URL
     router.push("/cars", { scroll: false });
   };
 
-  // Gestionar cambio de ordenamiento
-  const handleSortChange = (value: string) => {
-    // Marcar que este es un cambio iniciado por el usuario
-    userInitiatedChange.current = true;
+  // Improved filter clearing - now using our common handler
+  const handleClearFilters = () => {
+    console.log("DEBUG: handleClearFilters");
+    handleViewAllCars();
+  };
 
+  // Improved sort change handler
+  const handleSortChange = (value: string) => {
+    console.log("DEBUG: handleSortChange", value);
+    
+    if (value === sortOption) return;
+    
+    // Mark as user initiated
+    userInitiatedChange.current = true;
+    
+    // Update sort option
     setSortOption(value as SortOption);
   };
 
@@ -417,16 +442,24 @@ export default function CarsPage() {
 
   return (
     <div className="container py-10">
-      <Suspense>
-        <GetSearchParams setMyParams={setMyParams} />
-      </Suspense>
       <div className="flex flex-col items-center justify-center space-y-4 text-center mb-10">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-          {t("cars.pageTitle")}
+          {t('cars.pageTitle')}
         </h1>
         <p className="max-w-[800px] text-muted-foreground md:text-xl">
-          {t("cars.pageSubtitle")}
+          {t('cars.pageSubtitle')}
         </p>
+        
+        {/* Add a "View All Cars" button that's visible when filters are active */}
+        {(filters.searchTerm || filters.brands?.length || filters.categories?.length || 
+          filters.minPrice || filters.maxPrice) && (
+          <button 
+            onClick={handleViewAllCars}
+            className="text-primary hover:underline"
+          >
+            {t('common.view_all')}
+          </button>
+        )}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -526,5 +559,18 @@ export default function CarsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Main page component that uses Suspense
+export default function CarsPage() {
+  return (
+    <Suspense fallback={
+      <div className="container py-10 flex items-center justify-center min-h-[50vh]">
+        <Loader2 className="h-10 w-10 animate-spin text-primary" />
+      </div>
+    }>
+      <CarsPageContent />
+    </Suspense>
   );
 }

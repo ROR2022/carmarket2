@@ -19,7 +19,8 @@
     "warning": "Advertencia",
     "info": "Información",
     "retry": "Reintentar",
-    "back_to_cars": "Volver a la lista de autos"
+    "back_to_cars": "Volver a la lista de autos",
+    "view_all": "Ver todos"
   },
   "navbar": {
     "buy": "Comprar",
