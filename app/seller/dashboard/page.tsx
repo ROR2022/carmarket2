@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
-import { auth } from '@/lib/auth';
+//import { auth } from '@/lib/auth';
+import { createClient } from '@/utils/supabase/server';
 import { SellerDashboard } from '@/components/analytics/seller-dashboard';
 import { Metadata } from 'next';
 
@@ -9,14 +10,15 @@ export const metadata: Metadata = {
 };
 
 export default async function SellerDashboardPage() {
-  const session = await auth();
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
   
   // Redirigir a login si no hay sesión
-  if (!session || !session.user) {
+  if (!user) {
     redirect('/sign-in?callbackUrl=/seller/dashboard');
   }
   
-  const userId = session.user.id;
+  const userId = user.id;
   
   return (
     <main className="container mx-auto py-6 px-4">

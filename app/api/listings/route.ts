@@ -23,8 +23,8 @@ export async function POST(request: NextRequest) {
     }
 
     if (methodSelected === 'deleteListing') {
-        const listing = await ListingService.deleteListing(sentParams.listingId, user.id);
-        return NextResponse.json(listing);
+        await ListingService.deleteListing(sentParams.listingId, user.id);
+        return NextResponse.json({ success: true, message: 'Listing deleted successfully' });
     }
 
     if (methodSelected === 'changeListingStatus') {

@@ -242,7 +242,7 @@ export default function ListingPage() {
           await axios.post("/api/storage", {
             methodSelected: "saveListingImages",
             sentParams: {
-              editLinstingId: listingId,
+              editListingId: listingId,
               uploadedImages,
             },
           });
@@ -275,7 +275,7 @@ export default function ListingPage() {
           await axios.post("/api/storage", {
             methodSelected: "saveListingDocuments",
             sentParams: {
-              editLinstingId: listingId,
+              editListingId: listingId,
               uploadedDocuments,
             },
           });

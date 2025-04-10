@@ -407,30 +407,46 @@ export const ListingService = {
   async deleteListing(id: string, userId: string): Promise<void> {
     const supabase = await createClient();
     
-    // Verificar propiedad del anuncio
-    const { data: listing, error: fetchError } = await supabase
-      .from('listings')
-      .select('seller_id')
-      .eq('id', id)
-      .single();
+    console.log(`Attempting to delete listing with ID: ${id} by user: ${userId}`);
     
-    if (fetchError || !listing) {
-      throw new Error('No se pudo encontrar el anuncio');
-    }
-    
-    if (listing.seller_id !== userId) {
-      throw new Error('No tienes permiso para eliminar este anuncio');
-    }
-    
-    // Eliminar el anuncio (las imágenes y documentos se eliminarán por la restricción ON DELETE CASCADE)
-    const { error: deleteError } = await supabase
-      .from('listings')
-      .delete()
-      .eq('id', id);
-    
-    if (deleteError) {
-      console.error('Error deleting listing:', deleteError);
-      throw new Error('Error al eliminar el anuncio: ' + deleteError.message);
+    try {
+      // Verificar propiedad del anuncio - using cast to UUID for comparison
+      const { data: listing, error: fetchError } = await supabase
+        .from('listings')
+        .select('seller_id')
+        .filter('id', 'eq', id)
+        .single();
+      
+      if (fetchError) {
+        console.error('Error fetching listing for deletion:', fetchError);
+        throw new Error(`No se pudo encontrar el anuncio: ${fetchError.message}`);
+      }
+      
+      if (!listing) {
+        console.error('Listing not found for deletion, ID:', id);
+        throw new Error('No se pudo encontrar el anuncio');
+      }
+      
+      if (listing.seller_id !== userId) {
+        console.error('User does not have permission to delete this listing');
+        throw new Error('No tienes permiso para eliminar este anuncio');
+      }
+      
+      // Eliminar el anuncio usando filter en lugar de eq para mejor manejo de tipos
+      const { error: deleteError } = await supabase
+        .from('listings')
+        .delete()
+        .filter('id', 'eq', id);
+      
+      if (deleteError) {
+        console.error('Error deleting listing:', deleteError);
+        throw new Error('Error al eliminar el anuncio: ' + deleteError.message);
+      }
+      
+      console.log(`Successfully deleted listing with ID: ${id}`);
+    } catch (error) {
+      console.error('Exception in deleteListing:', error);
+      throw error;
     }
   },
   

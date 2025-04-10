@@ -24,12 +24,14 @@ export async function POST(request: NextRequest) {
     const documents = formData.getAll("documents") as File[];
 
     if (methodSelected === "uploadListingImages") {
+      console.warn("uploadListingImages, enviando imagenes al servicio de Storage...");
       // ahora enviar todo al servicio de Storage uploadListingImages
       const uploadedImages = await StorageService.uploadListingImages(
         images,
         userId,
         listingId
       );
+      console.warn("uploadListingImages, imagenes subidas al servicio de Storage...");
       // devolver la respuesta
       return NextResponse.json(uploadedImages);
     }
@@ -44,7 +46,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(uploadedDocuments);
     }
 
-
+    return NextResponse.json({ error: "Method not implemented" }, { status: 500 });
   } catch (error) {
     console.error("Error creating supabase client:", error);
     return NextResponse.json(

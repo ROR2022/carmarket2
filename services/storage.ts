@@ -1,4 +1,4 @@
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '@/utils/supabase/server';
 import { v4 as uuidv4 } from 'uuid';
 
 export interface StorageFile {
@@ -16,7 +16,7 @@ export const StorageService = {
    * @returns Información del archivo subido
    */
   async uploadVehicleImage(file: File, userId: string, listingId?: string): Promise<StorageFile> {
-    const supabase = createClient();
+    const supabase = await createClient();
     
     // Generar un ID único para el archivo
     const fileId = uuidv4();
@@ -61,7 +61,7 @@ export const StorageService = {
    * @returns Información del archivo subido
    */
   async uploadVehicleDocument(file: File, userId: string, listingId: string): Promise<StorageFile> {
-    const supabase = createClient();
+    const supabase = await createClient();
     
     // Generar un ID único para el archivo
     const fileId = uuidv4();
@@ -106,12 +106,13 @@ export const StorageService = {
    */
   async uploadListingImages(files: File[], userId: string, listingId: string): Promise<StorageFile[]> {
     const results: StorageFile[] = [];
-    
+    console.warn("StorageService, uploadListingImages, subiendo imagenes al Storage...");
     // Subir cada archivo secuencialmente
     for (const file of files) {
       const result = await this.uploadVehicleImage(file, userId, listingId);
       results.push(result);
     }
+    console.warn("StorageService, uploadListingImages, imagenes subidas al Storage...");
     
     return results;
   },
@@ -142,26 +143,61 @@ export const StorageService = {
    * @returns void
    */
   async saveListingImages(listingId: string, files: StorageFile[]): Promise<void> {
-    const supabase = createClient();
+    const supabase = await createClient();
     
-    // Preparar los datos para insertar
-    const imageData = files.map((file, index) => ({
-      listing_id: listingId,
-      url: file.url,
-      storage_path: file.path,
-      display_order: index,
-      is_primary: index === 0 // La primera imagen es la principal
-    }));
+    // Get the authenticated user
+    const { data, error: authError } = await supabase.auth.getUser();
     
-    // Insertar en la base de datos
-    const { error } = await supabase
-      .from('listing_images')
-      .insert(imageData);
-    
-    if (error) {
-      console.error('Error saving listing images:', error);
-      throw new Error('Error al guardar las imágenes del anuncio: ' + error.message);
+    if (authError || !data.user) {
+      console.error('Error getting authenticated user:', authError);
+      throw new Error('Usuario no autenticado');
     }
+    
+    if (!listingId) {
+      console.error('Error: Missing listing ID');
+      throw new Error('Error: El ID del anuncio es requerido');
+    }
+    
+    const user = data.user;
+    console.log('Saving images for listing:', listingId, 'by user:', user.id);
+    
+    // Process each image individually using the secure RPC function
+    for (let index = 0; index < files.length; index++) {
+      const file = files[index];
+      const isPrimary = index === 0; // La primera imagen es la principal
+      
+      try {
+        console.log(`Calling RPC for image ${index} with parameters:`, {
+          p_listing_id: listingId,
+          p_url: file.url,
+          p_path: file.path,
+          p_order: index,
+          p_is_primary: isPrimary,
+          p_user_id: user.id
+        });
+        
+        const { error } = await supabase.rpc('insert_listing_image', {
+          p_listing_id: listingId,
+          p_url: file.url,
+          p_path: file.path,
+          p_order: index,
+          p_is_primary: isPrimary,
+          p_user_id: user.id
+        });
+        
+        if (error) {
+          console.error(`Error saving image ${index}:`, error);
+          throw new Error('Error al guardar la imagen del anuncio: ' + error.message);
+        }
+        
+        console.log(`Image ${index} saved successfully`);
+      } catch (err) {
+        console.error(`Exception saving image ${index}:`, err);
+        throw err;
+      }
+    }
+    
+    console.log('All images saved successfully');
   },
   
   /**
@@ -176,26 +212,47 @@ export const StorageService = {
     files: StorageFile[], 
     documentTypes: string[] = []
   ): Promise<void> {
-    const supabase = createClient();
+    const supabase = await createClient();
     
-    // Preparar los datos para insertar
-    const documentData = files.map((file, index) => ({
-      listing_id: listingId,
-      url: file.url,
-      storage_path: file.path,
-      file_name: file.name,
-      document_type: documentTypes[index] || 'other'
-    }));
+    // Get the authenticated user
+    const { data, error: authError } = await supabase.auth.getUser();
     
-    // Insertar en la base de datos
-    const { error } = await supabase
-      .from('listing_documents')
-      .insert(documentData);
-    
-    if (error) {
-      console.error('Error saving listing documents:', error);
-      throw new Error('Error al guardar los documentos del anuncio: ' + error.message);
+    if (authError || !data.user) {
+      console.error('Error getting authenticated user:', authError);
+      throw new Error('Usuario no autenticado');
     }
+    
+    const user = data.user;
+    console.log('Saving documents for listing:', listingId, 'by user:', user.id);
+    
+    // Process each document with RPC function
+    for (let index = 0; index < files.length; index++) {
+      const file = files[index];
+      const documentType = documentTypes[index] || 'other';
+      
+      try {
+        const { error } = await supabase.rpc('insert_listing_document', {
+          p_listing_id: listingId,
+          p_url: file.url,
+          p_path: file.path,
+          p_file_name: file.name,
+          p_document_type: documentType,
+          p_user_id: user.id
+        });
+        
+        if (error) {
+          console.error(`Error saving document ${index}:`, error);
+          throw new Error('Error al guardar el documento del anuncio: ' + error.message);
+        }
+        
+        console.log(`Document ${index} saved successfully`);
+      } catch (err) {
+        console.error(`Exception saving document ${index}:`, err);
+        throw err;
+      }
+    }
+    
+    console.log('All documents saved successfully');
   },
   
   /**
@@ -205,7 +262,7 @@ export const StorageService = {
    * @returns void
    */
   async deleteFile(path: string, bucket: 'vehicle-images' | 'vehicle-documents'): Promise<void> {
-    const supabase = createClient();
+    const supabase = await createClient();
     
     const { error } = await supabase.storage
       .from(bucket)
@@ -224,7 +281,7 @@ export const StorageService = {
    * @returns void
    */
   async deleteListingImage(imageId: string, userId: string): Promise<void> {
-    const supabase = createClient();
+    const supabase = await createClient();
     
     // Obtener la ruta de almacenamiento y verificar propiedad
     const { data: image, error: fetchError } = await supabase

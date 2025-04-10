@@ -421,8 +421,7 @@ export default function MyListingsPage() {
       <div className="container py-10 flex flex-col items-center justify-center min-h-[70vh]">
         <Loader2 className="h-10 w-10 animate-spin text-primary mb-4" />
         <p>{t('common.loading')}</p>
-        <p>authLoading: {authLoading.toString()}</p>
-        <p>loading: {loading.toString()}</p>
+        
       </div>
     );
   }

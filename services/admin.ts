@@ -1,5 +1,5 @@
 import { CarListing, ListingStatus } from '@/types/listing';
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '@/utils/supabase/server';
 import { CarCategory, FuelType, Transmission } from '@/types/car';
 
 // Tipo para los elementos de listado en la base de datos
@@ -100,7 +100,7 @@ export type PaginatedListings = {
 export const AdminService = {
   // Verificar si el usuario actual es admin
   async isAdmin(): Promise<boolean> {
-    const supabase = createClient();
+    const supabase = await createClient();
     
     const { data, error } = await supabase
       .rpc('is_admin');
@@ -115,7 +115,7 @@ export const AdminService = {
   
   // Obtener estadísticas para el dashboard
   async getAdminStats(): Promise<AdminStats> {
-    const supabase = createClient();
+    const supabase = await createClient();
     
     console.log('getAdminStats recuperando estadisticas...');
     // Obtener conteos de anuncios por estado
@@ -174,7 +174,7 @@ export const AdminService = {
   
   // Obtener anuncios para revisión con filtros y paginación
   async getListingsForReview(filters: AdminListingsFilter = {}): Promise<PaginatedListings> {
-    const supabase = createClient();
+    const supabase = await createClient();
     const {
       status,
       fromDate,
@@ -267,7 +267,7 @@ export const AdminService = {
   
   // Aprobar un anuncio
   async approveListing(id: string, adminNotes?: string): Promise<void> {
-    const supabase = createClient();
+    const supabase = await createClient();
     
     const { error } = await supabase
       .rpc('update_listing_status', {
@@ -284,7 +284,7 @@ export const AdminService = {
   
   // Rechazar un anuncio
   async rejectListing(id: string, adminNotes: string): Promise<void> {
-    const supabase = createClient();
+    const supabase = await createClient();
     
     const { error } = await supabase
       .rpc('update_listing_status', {
@@ -301,7 +301,7 @@ export const AdminService = {
   
   // Solicitar cambios en un anuncio
   async requestChanges(id: string, adminNotes: string): Promise<void> {
-    const supabase = createClient();
+    const supabase = await createClient();
     
     const { error } = await supabase
       .rpc('update_listing_status', {
