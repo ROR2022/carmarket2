@@ -1,104 +1,159 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
-</a>
+# 🚗 CarMarket - Marketplace de Vehículos
 
-<p align="center">
- The fastest way to build apps with Next.js and Supabase
-</p>
+<div align="center">
+  <img src="/public/logos/mainLogo.png" alt="CarMarket Logo" width="200"/>
+  <p><strong>Una plataforma moderna para la compra y venta de vehículos</strong></p>
+</div>
 
-<p align="center">
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#demo"><strong>Demo</strong></a> ·
-  <a href="#deploy-to-vercel"><strong>Deploy to Vercel</strong></a> ·
-  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
-  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
-  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
-</p>
-<br/>
+## 📋 Descripción
 
-## Features
+CarMarket es una plataforma web moderna y robusta diseñada para facilitar la compra y venta de vehículos. Construida con tecnologías de última generación, ofrece una experiencia fluida y segura tanto para compradores como vendedores.
 
-- Works across the entire [Next.js](https://nextjs.org) stack
-  - App Router
-  - Pages Router
-  - Middleware
-  - Client
-  - Server
-  - It just works!
-- supabase-ssr. A package to configure Supabase Auth to use cookies
-- Styling with [Tailwind CSS](https://tailwindcss.com)
-- Components with [shadcn/ui](https://ui.shadcn.com/)
-- Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
-  - Environment variables automatically assigned to Vercel project
+## ✨ Características Principales
 
-## Demo
+- 🔐 **Sistema de Autenticación Robusto**
+  - Registro y login de usuarios
+  - Roles diferenciados (admin, vendedor, comprador)
+  - Gestión de sesiones segura
 
-You can view a fully working demo at [demo-nextjs-with-supabase.vercel.app](https://demo-nextjs-with-supabase.vercel.app/).
+- 📝 **Gestión de Listados**
+  - Creación y edición de anuncios con auto-guardado
+  - Sistema avanzado de formularios multi-paso
+  - Carga de imágenes y documentos
+  - Vista previa de anuncios
 
-## Deploy to Vercel
+- 🖼️ **Gestión de Multimedia**
+  - Soporte para múltiples imágenes por anuncio
+  - Carga de documentos del vehículo
+  - Almacenamiento seguro en Supabase Storage
+  - Generación de URLs firmadas para documentos privados
 
-Vercel deployment will guide you through creating a Supabase account and project.
+- 👥 **Panel de Administración**
+  - Gestión de usuarios y roles
+  - Moderación de anuncios
+  - Estadísticas y reportes
 
-After installation of the Supabase integration, all relevant environment variables will be assigned to the project so the deployment is fully functioning.
+- 🌐 **Características Adicionales**
+  - Soporte multiidioma
+  - Diseño responsivo
+  - Interfaz moderna con Tailwind CSS y shadcn/ui
+  - Optimización SEO
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&demo-title=nextjs-with-supabase&demo-description=This+starter+configures+Supabase+Auth+to+use+cookies%2C+making+the+user%27s+session+available+throughout+the+entire+Next.js+app+-+Client+Components%2C+Server+Components%2C+Route+Handlers%2C+Server+Actions+and+Middleware.&demo-url=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2F&external-id=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&demo-image=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2Fopengraph-image.png)
+## 🛠️ Tecnologías Utilizadas
 
-The above will also clone the Starter kit to your GitHub, you can clone that locally and develop locally.
+- **Frontend:**
+  - Next.js 14 (App Router)
+  - React
+  - TypeScript
+  - Tailwind CSS
+  - shadcn/ui
+  - Lucide Icons
 
-If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
+- **Backend:**
+  - Supabase
+  - PostgreSQL
+  - Row Level Security (RLS)
+  - Edge Functions
 
-## Clone and run locally
+- **Almacenamiento:**
+  - Supabase Storage
+  - Gestión de archivos segura
 
-1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
+## 📦 Requisitos Previos
 
-2. Create a Next.js app using the Supabase Starter template npx command
+- Node.js 18.x o superior
+- npm o pnpm
+- Cuenta en Supabase
+- Git
 
+## 🚀 Instalación y Configuración
+
+1. **Clonar el repositorio**
    ```bash
-   npx create-next-app --example with-supabase with-supabase-app
+   git clone [URL_DEL_REPOSITORIO]
+   cd carmarket
    ```
 
+2. **Instalar dependencias**
    ```bash
-   yarn create next-app --example with-supabase with-supabase-app
+   npm install
+   # o
+   pnpm install
    ```
 
+3. **Configurar variables de entorno**
    ```bash
-   pnpm create next-app --example with-supabase with-supabase-app
+   cp .env.example .env.local
+   ```
+   Editar `.env.local` con tus credenciales de Supabase:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=tu_url_de_supabase
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_clave_anonima
    ```
 
-3. Use `cd` to change into the app's directory
-
-   ```bash
-   cd with-supabase-app
-   ```
-
-4. Rename `.env.example` to `.env.local` and update the following:
-
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=[INSERT SUPABASE PROJECT API ANON KEY]
-   ```
-
-   Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` can be found in [your Supabase project's API settings](https://app.supabase.com/project/_/settings/api)
-
-5. You can now run the Next.js local development server:
-
+4. **Iniciar el servidor de desarrollo**
    ```bash
    npm run dev
+   # o
+   pnpm dev
    ```
 
-   The starter kit should now be running on [localhost:3000](http://localhost:3000/).
+## 📁 Estructura del Proyecto
 
-6. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
+```
+carmarket/
+├── app/                # Componentes y páginas de Next.js
+├── components/         # Componentes reutilizables
+├── lib/               # Utilidades y configuraciones
+├── public/            # Archivos estáticos
+├── services/          # Servicios de la aplicación
+├── styles/            # Estilos globales
+├── types/             # Definiciones de TypeScript
+└── utils/             # Funciones auxiliares
+```
 
-> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
+## 🔧 Configuración de Base de Datos
 
-## Feedback and issues
+El proyecto utiliza Supabase como backend. Necesitarás:
 
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
+1. Crear un proyecto en Supabase
+2. Ejecutar las migraciones SQL incluidas
+3. Configurar las políticas de RLS
+4. Habilitar el almacenamiento y crear los buckets necesarios
 
-## More Supabase examples
+## 📚 Documentación Adicional
 
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
+- [Guía de Contribución](CONTRIBUTING.md)
+- [Documentación de API](API.md)
+- [Guía de Despliegue](DEPLOYMENT.md)
+
+## 🌟 Características Próximas
+
+- [ ] Sistema de mensajería entre usuarios
+- [ ] Integración con pasarelas de pago
+- [ ] Sistema de reseñas y calificaciones
+- [ ] Búsqueda avanzada con filtros
+- [ ] Notificaciones en tiempo real
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles.
+
+## 👥 Equipo
+
+- [Nombre del Desarrollador Principal]
+- [Otros Contribuidores]
+
+## 🤝 Contribuir
+
+Las contribuciones son bienvenidas. Por favor, lee la [guía de contribución](CONTRIBUTING.md) antes de enviar un pull request.
+
+## 📞 Soporte
+
+Si tienes alguna pregunta o problema, por favor abre un issue en el repositorio o contacta al equipo de desarrollo. kodeandoando2023@gmail.com
+
+---
+
+<div align="center">
+  <p>Desarrollado con ❤️ por ROR2022</p>
+</div>
