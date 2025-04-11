@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -38,7 +38,7 @@ interface ReservationDetails {
   listingId: string;
 }
 
-export default function ReservationSuccessPage() {
+function ReservationContentPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { t } = useTranslation();
@@ -254,3 +254,11 @@ export default function ReservationSuccessPage() {
     </div>
   );
 } 
+
+export default function ReservationSuccessPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ReservationContentPage />
+    </Suspense>
+  );
+}

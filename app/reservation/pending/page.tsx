@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -23,7 +23,7 @@ interface CarDetails {
   images?: string[];
 }
 
-export default function ReservationPendingPage() {
+function ReservationContentPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { t } = useTranslation();
@@ -145,3 +145,11 @@ export default function ReservationPendingPage() {
     </div>
   );
 } 
+
+export default function ReservationPendingPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ReservationContentPage />
+    </Suspense>
+  );
+}
