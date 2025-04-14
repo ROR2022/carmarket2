@@ -1,7 +1,7 @@
 # 🚗 CarMarket - Marketplace de Vehículos
 
 <div align="center">
-  <img src="/public/logos/mainLogo.png" alt="CarMarket Logo" width="200"/>
+  <img src="/public/images/logos/mainLogo.png" alt="CarMarket Logo" width="200"/>
   <p><strong>Una plataforma moderna para la compra y venta de vehículos</strong></p>
 </div>
 
